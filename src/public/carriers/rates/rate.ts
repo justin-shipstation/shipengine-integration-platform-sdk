@@ -1,5 +1,4 @@
 import type { ChargePOJO, DateTimeZonePOJO, NotePOJO } from "../../common";
-import type { DeliveryServiceIdentifierPOJO } from "../delivery-service";
 import type { RatePackage } from "./rate-package";
 import type { DeliveryConfirmationIdentifierPOJO } from "../delivery-confirmation";
 
@@ -10,7 +9,7 @@ export interface Rate {
   /**
    * The delivery service this rate is for
    */
-  deliveryService: DeliveryServiceIdentifierPOJO | string;
+  deliveryService: string;
 
   /**
    * The date/time that the package is expected to ship.

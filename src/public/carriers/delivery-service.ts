@@ -99,7 +99,7 @@ export interface DeliveryServiceDefinition extends Definition {
   /**
    * The types of packaging that are provided/allowed for this service
    */
-  packaging: PackagingDefinition;
+  packaging: PackagingDefinition[];
 
   /**
    * The types of package delivery confirmations offered for this service
@@ -112,11 +112,6 @@ export interface DeliveryServiceDefinition extends Definition {
  * Identifies a delivery service that is offered by a carrier
  */
 export type DeliveryServiceIdentifier = DefinitionIdentifier;
-
-/**
- * Identifies a delivery service that is offered by a carrier
- */
-export type DeliveryServiceIdentifierPOJO = Definition;
 
 
 /**

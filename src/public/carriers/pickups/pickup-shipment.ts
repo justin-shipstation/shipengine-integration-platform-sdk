@@ -1,4 +1,3 @@
-import type { DeliveryService } from "../delivery-service";
 import type { ShipmentIdentifier } from "../shipments/shipment-identifier";
 import type { PickupPackage } from "./pickup-package";
 
@@ -9,7 +8,7 @@ export interface PickupShipment extends ShipmentIdentifier {
   /**
    * The delivery service to use
    */
-  deliveryService: DeliveryService;
+  deliveryService: string;
 
   /**
    * Arbitrary data about this shipment that was previously persisted by the ShipEngine Platform.

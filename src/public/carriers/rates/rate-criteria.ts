@@ -1,5 +1,4 @@
 import type { AddressWithContactInfo, DateTimeZone } from "../../common";
-import type { DeliveryService } from "../delivery-service";
 import type { FulfillmentService } from "../fulfillment-service";
 import type { PackageRateCriteria } from "./package-rate-criteria";
 import type { DeliveryConfirmation } from "../delivery-confirmation";
@@ -14,7 +13,7 @@ export interface RateCriteria {
    * `fulfillmentService` are specified, then rate quotes should be returned for all
    * applicable services.
    */
-  deliveryService?: DeliveryService;
+  deliveryService?: string;
 
   /**
    * Well-known carrier services that may be used to fulfill the shipment.

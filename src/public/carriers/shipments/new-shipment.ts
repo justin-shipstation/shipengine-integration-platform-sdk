@@ -1,5 +1,4 @@
 import type { AddressWithContactInfo, DateTimeZone, MonetaryValue } from "../../common";
-import type { DeliveryService } from "../delivery-service";
 import type { NewPackage } from "../packages/new-package";
 import { DeliveryConfirmation } from "../delivery-confirmation";
 
@@ -10,7 +9,7 @@ export interface NewShipment {
   /**
    * The delivery service to use
    */
-  deliveryService: DeliveryService;
+  deliveryService: string;
 
   /**
    * The sender's contact info and address
