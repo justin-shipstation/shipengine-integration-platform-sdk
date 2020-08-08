@@ -8,7 +8,7 @@ import { Joi } from "../validation";
  * A monetary value in a supported currency
  */
 export class MonetaryValue implements IMonetaryValue {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "monetary value",
     schema: Joi.object({
       value: Joi.alternatives(Joi.number()).required(),
@@ -16,8 +16,8 @@ export class MonetaryValue implements IMonetaryValue {
     }),
   };
 
-  public readonly value: number;
-  public readonly currency: string;
+  public value: number;
+  public currency: string;
 
   public constructor(pojo: MonetaryValuePOJO) {
     this.value = currency(pojo.value).value;

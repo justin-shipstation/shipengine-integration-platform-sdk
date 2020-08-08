@@ -6,7 +6,7 @@ const _private = Symbol("private fields");
 export type PackagingPOJO = PackagingDefinition;
 
 export class Packaging extends DefinitionIdentifier implements IPackaging {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "packaging",
     schema: DefinitionIdentifier[_internal].schema.keys({
       name: Joi.string().trim().singleLine().min(1).max(100).required(),
@@ -17,14 +17,14 @@ export class Packaging extends DefinitionIdentifier implements IPackaging {
   };
 
 
-  private readonly [_private]: {
-    readonly app: App;
+  private [_private]: {
+    app: App;
   };
 
-  public readonly name: string;
-  public readonly description: string;
-  public readonly requiresWeight: boolean;
-  public readonly requiresDimensions: boolean;
+  public name: string;
+  public description: string;
+  public requiresWeight: boolean;
+  public requiresDimensions: boolean;
 
   public constructor(pojo: PackagingPOJO, app: App) {
     super(pojo);

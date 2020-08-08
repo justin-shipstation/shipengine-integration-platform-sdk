@@ -3,7 +3,7 @@ import { Country, CustomsItem as CustomsItemPOJO, CustomsItemType } from "../../
 import { hideAndFreeze, Joi, MonetaryValue, Quantity, _internal } from "../../common";
 
 export class CustomsItem {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "customs item",
     schema: Joi.object({
       type: Joi.string().enum(CustomsItemType).required(),
@@ -17,14 +17,14 @@ export class CustomsItem {
     }),
   };
 
-  public readonly type: CustomsItemType;
-  public readonly sku: string;
-  public readonly description: string;
-  public readonly quantity: Quantity;
-  public readonly unitValue: MonetaryValue;
-  public readonly countryOfOrigin?: Country;
-  public readonly countryOfManufacture?: Country;
-  public readonly harmonizedTariffCode: string;
+  public type: CustomsItemType;
+  public sku: string;
+  public description: string;
+  public quantity: Quantity;
+  public unitValue: MonetaryValue;
+  public countryOfOrigin?: Country;
+  public countryOfManufacture?: Country;
+  public harmonizedTariffCode: string;
 
   public get totalValue(): MonetaryValue {
     return new MonetaryValue({

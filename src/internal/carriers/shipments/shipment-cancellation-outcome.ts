@@ -3,7 +3,7 @@ import { hideAndFreeze, Joi, Note, _internal } from "../../common";
 import { ShipmentIdentifier } from "./shipment-identifier";
 
 export class ShipmentCancellationOutcome {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: ShipmentIdentifier[_internal].schema.keys({
       cancellationID: Joi.string().uuid().required(),
@@ -16,13 +16,13 @@ export class ShipmentCancellationOutcome {
     }),
   };
 
-  public readonly cancellationID: UUID;
-  public readonly status: CancellationStatus;
-  public readonly confirmationNumber: string;
-  public readonly code: string;
-  public readonly description: string;
-  public readonly notes: readonly Note[];
-  public readonly metadata: object;
+  public cancellationID: UUID;
+  public status: CancellationStatus;
+  public confirmationNumber: string;
+  public code: string;
+  public description: string;
+  public notes: Note[];
+  public metadata: object;
 
   public constructor(pojo: ShipmentCancellationOutcomePOJO) {
     this.cancellationID = pojo.cancellationID;

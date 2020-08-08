@@ -7,7 +7,7 @@ import { ShippingPreferences } from "./shipping-preferences";
 
 
 export class SalesOrder extends SalesOrderIdentifierBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "sales order",
     schema: SalesOrderIdentifier[_internal].schema.keys({
       createdDateTime: DateTimeZone[_internal].schema.required(),
@@ -24,18 +24,18 @@ export class SalesOrder extends SalesOrderIdentifierBase {
     }),
   };
 
-  public readonly createdDateTime: DateTimeZone;
-  public readonly status: SalesOrderStatus;
-  public readonly paymentMethod?: PaymentMethod;
-  public readonly orderURL?: URL;
-  public readonly shipTo: AddressWithContactInfo;
-  public readonly buyer: Buyer;
-  public readonly shippingPreferences: ShippingPreferences;
-  public readonly charges: readonly Charge[];
-  public readonly totalCharges: MonetaryValue;
-  public readonly items: readonly SalesOrderItem[];
-  public readonly notes: readonly Note[];
-  public readonly metadata: object;
+  public createdDateTime: DateTimeZone;
+  public status: SalesOrderStatus;
+  public paymentMethod?: PaymentMethod;
+  public orderURL?: URL;
+  public shipTo: AddressWithContactInfo;
+  public buyer: Buyer;
+  public shippingPreferences: ShippingPreferences;
+  public charges: Charge[];
+  public totalCharges: MonetaryValue;
+  public items: SalesOrderItem[];
+  public notes: Note[];
+  public metadata: object;
 
   public constructor(pojo: SalesOrderPOJO) {
     super(pojo);

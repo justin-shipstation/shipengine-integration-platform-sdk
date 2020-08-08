@@ -3,7 +3,7 @@ import { calculateTotalCharges, Charge, hideAndFreeze, Identifiers, Joi, Monetar
 import { ShipmentIdentifier } from "../shipments/shipment-identifier";
 
 export class PickupConfirmation {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "pickup",
     schema: Joi.object({
       id: Joi.string().trim().singleLine().min(1).max(100).required(),
@@ -16,14 +16,14 @@ export class PickupConfirmation {
     }),
   };
 
-  public readonly id: string;
-  public readonly identifiers: Identifiers;
-  public readonly timeWindows: readonly TimeRange[];
-  public readonly charges: readonly Charge[];
-  public readonly totalAmount: MonetaryValue;
-  public readonly shipments: readonly ShipmentIdentifier[];
-  public readonly notes: readonly Note[];
-  public readonly metadata: object;
+  public id: string;
+  public identifiers: Identifiers;
+  public timeWindows: TimeRange[];
+  public charges: Charge[];
+  public totalAmount: MonetaryValue;
+  public shipments: ShipmentIdentifier[];
+  public notes: Note[];
+  public metadata: object;
 
   public constructor(pojo: PickupConfirmationPOJO) {
     this.id = pojo.id;

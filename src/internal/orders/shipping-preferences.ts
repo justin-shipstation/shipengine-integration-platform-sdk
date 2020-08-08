@@ -2,7 +2,7 @@ import { DeliveryConfirmationType, ShippingPreferences as ShippingPreferencesPOJ
 import { hideAndFreeze, Joi, MonetaryValue, _internal } from "../common";
 
 export class ShippingPreferences {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipping preferences",
     schema: Joi.object({
       deliveryConfirmationType: Joi.string().enum(DeliveryConfirmationType),
@@ -12,10 +12,10 @@ export class ShippingPreferences {
     }),
   };
 
-  public readonly deliveryConfirmationType?: DeliveryConfirmationType;
-  public readonly containsAlcohol: boolean;
-  public readonly saturdayDelivery: boolean;
-  public readonly insuredValue?: MonetaryValue;
+  public deliveryConfirmationType?: DeliveryConfirmationType;
+  public containsAlcohol: boolean;
+  public saturdayDelivery: boolean;
+  public insuredValue?: MonetaryValue;
 
   public constructor(pojo: ShippingPreferencesPOJO) {
     this.deliveryConfirmationType = pojo.deliveryConfirmationType;

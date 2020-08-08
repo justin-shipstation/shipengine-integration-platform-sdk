@@ -3,7 +3,7 @@ import { hideAndFreeze, Joi, _internal } from "../../common";
 import { Document, DocumentBase } from "./document";
 
 export class Label extends DocumentBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "label",
     schema: Document[_internal].schema.keys({
       referenceFields: Joi.array().items(
@@ -12,7 +12,7 @@ export class Label extends DocumentBase {
     }),
   };
 
-  public readonly referenceFields: readonly string[];
+  public referenceFields: string[];
 
   public constructor(pojo: LabelPOJO) {
     super(pojo);

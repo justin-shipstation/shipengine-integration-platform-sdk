@@ -19,7 +19,7 @@ export interface OrderAppPOJO extends OrderAppDefinition, AppPOJO {
 
 
 export class OrderApp extends ConnectionApp {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "ShipEngine Integration Platform order app",
     schema: ConnectionApp[_internal].schema.keys({
       getSalesOrdersByDate: Joi.function(),
@@ -30,15 +30,15 @@ export class OrderApp extends ConnectionApp {
     }),
   };
 
-  private readonly [_private]: {
-    readonly getSalesOrdersByDate?: GetSalesOrdersByDate;
-    readonly shipmentCreated?: ShipmentCreated;
-    readonly shipmentCancelled?: ShipmentCancelled;
+  private [_private]: {
+    getSalesOrdersByDate?: GetSalesOrdersByDate;
+    shipmentCreated?: ShipmentCreated;
+    shipmentCancelled?: ShipmentCancelled;
   };
 
-  public readonly type: AppType;
-  public readonly sendMail: boolean;
-  public readonly canConfigureTimeZone: boolean;
+  public type: AppType;
+  public sendMail: boolean;
+  public canConfigureTimeZone: boolean;
 
 
   public constructor(pojo: OrderAppPOJO) {

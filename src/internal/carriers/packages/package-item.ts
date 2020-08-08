@@ -17,7 +17,7 @@ export interface PackageItemPOJO {
 
 
 export class PackageItem implements IPackageItem {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "package item",
     schema: Joi.object({
       sku: Joi.string().trim().singleLine().allow("").max(100),
@@ -30,13 +30,13 @@ export class PackageItem implements IPackageItem {
     }),
   };
 
-  public readonly sku: string;
-  public readonly identifiers: Identifiers;
-  public readonly salesOrder?: SalesOrderIdentifier;
-  public readonly salesOrderItem?: SalesOrderItemIdentifier;
-  public readonly product?: ProductIdentifier;
-  public readonly quantity: Quantity;
-  public readonly unitPrice: MonetaryValue;
+  public sku: string;
+  public identifiers: Identifiers;
+  public salesOrder?: SalesOrderIdentifier;
+  public salesOrderItem?: SalesOrderItemIdentifier;
+  public product?: ProductIdentifier;
+  public quantity: Quantity;
+  public unitPrice: MonetaryValue;
 
   public get totalPrice(): MonetaryValue {
     return new MonetaryValue({

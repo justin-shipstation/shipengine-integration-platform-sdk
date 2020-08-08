@@ -5,23 +5,23 @@ import { Joi } from "../validation";
 export type PartialAddressPOJO = Partial<AddressPOJO>;
 
 export interface PartialAddress {
-  readonly company: string;
-  readonly addressLines: readonly string[];
-  readonly cityLocality: string;
-  readonly stateProvince: string;
-  readonly postalCode: string;
-  readonly country?: Country;
-  readonly isResidential?: boolean;
+  company: string;
+  addressLines: string[];
+  cityLocality: string;
+  stateProvince: string;
+  postalCode: string;
+  country?: Country;
+  isResidential?: boolean;
 }
 
 export abstract class PartialAddressBase {
-  public readonly company: string;
-  public readonly addressLines: readonly string[];
-  public readonly cityLocality: string;
-  public readonly stateProvince: string;
-  public readonly postalCode: string;
-  public readonly country?: Country;
-  public readonly isResidential?: boolean;
+  public company: string;
+  public addressLines: string[];
+  public cityLocality: string;
+  public stateProvince: string;
+  public postalCode: string;
+  public country?: Country;
+  public isResidential?: boolean;
 
   public constructor(pojo: PartialAddressPOJO) {
     this.company = pojo.company || "";
@@ -36,7 +36,7 @@ export abstract class PartialAddressBase {
 
 
 export class PartialAddress extends PartialAddressBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "address",
     schema: Joi.object({
       company: Joi.string().trim().singleLine().allow("").max(100),

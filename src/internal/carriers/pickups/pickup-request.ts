@@ -8,13 +8,13 @@ export interface PickupRequestPOJO {
   timeWindow: TimeRangePOJO;
   address: AddressPOJO;
   contact: ContactInfoPOJO;
-  notes?: readonly NotePOJO[];
-  shipments: readonly PickupShipmentPOJO[];
+  notes?: NotePOJO[];
+  shipments: PickupShipmentPOJO[];
 }
 
 
 export class PickupRequest implements IPickupRequest {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "pickup request",
     schema: Joi.object({
       pickupService: Joi.alternatives(
@@ -29,12 +29,12 @@ export class PickupRequest implements IPickupRequest {
     }),
   };
 
-  public readonly pickupService: PickupService;
-  public readonly timeWindow: TimeRange;
-  public readonly address: Address;
-  public readonly contact: ContactInfo;
-  public readonly notes: readonly Note[];
-  public readonly shipments: readonly PickupShipment[];
+  public pickupService: PickupService;
+  public timeWindow: TimeRange;
+  public address: Address;
+  public contact: ContactInfo;
+  public notes: Note[];
+  public shipments: PickupShipment[];
 
   public constructor(pojo: PickupRequestPOJO, app: App) {
     this.pickupService = app[_internal].references.lookup(pojo.pickupService, PickupService);

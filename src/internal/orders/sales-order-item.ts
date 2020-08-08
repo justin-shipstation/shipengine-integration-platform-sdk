@@ -5,7 +5,7 @@ import { ProductIdentifier } from "../products";
 import { SalesOrderItemIdentifier, SalesOrderItemIdentifierBase } from "./sales-order-item-identifier";
 
 export class SalesOrderItem extends SalesOrderItemIdentifierBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "sales order item",
     schema: SalesOrderItemIdentifier[_internal].schema.keys({
       name: Joi.string().trim().singleLine().min(1).max(100).required(),
@@ -21,18 +21,18 @@ export class SalesOrderItem extends SalesOrderItemIdentifierBase {
     }),
   };
 
-  public readonly name: string;
-  public readonly description: string;
-  public readonly product: ProductIdentifier;
-  public readonly quantity: Quantity;
-  public readonly unitPrice: MonetaryValue;
-  public readonly totalPrice: MonetaryValue;
-  public readonly unitWeight?: Weight;
-  public readonly itemURL?: URL;
-  public readonly thumbnailURL?: URL;
+  public name: string;
+  public description: string;
+  public product: ProductIdentifier;
+  public quantity: Quantity;
+  public unitPrice: MonetaryValue;
+  public totalPrice: MonetaryValue;
+  public unitWeight?: Weight;
+  public itemURL?: URL;
+  public thumbnailURL?: URL;
 
-  public readonly notes: readonly Note[];
-  public readonly metadata: object;
+  public notes: Note[];
+  public metadata: object;
 
   public constructor(pojo: SalesOrderItemPOJO) {
     super(pojo);

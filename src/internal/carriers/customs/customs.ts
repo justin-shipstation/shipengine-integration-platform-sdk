@@ -3,7 +3,7 @@ import { hideAndFreeze, Joi, _internal } from "../../common";
 import { CustomsItem } from "./customs-item";
 
 export class Customs {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "customs",
     schema: Joi.object({
       nonDeliveryOption: Joi.string().enum(NonDeliveryOption),
@@ -11,8 +11,8 @@ export class Customs {
     }),
   };
 
-  public readonly nonDeliveryOption?: NonDeliveryOption;
-  public readonly contents: readonly CustomsItem[];
+  public nonDeliveryOption?: NonDeliveryOption;
+  public contents: CustomsItem[];
 
   public constructor(pojo: CustomsPOJO) {
     this.nonDeliveryOption = pojo.nonDeliveryOption;

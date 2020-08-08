@@ -5,7 +5,7 @@ import { RatePackage } from "./rate-package";
 import { DeliveryConfirmation } from "../delivery-confirmation";
 
 export class Rate {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "rate",
     schema: Joi.object({
       deliveryService: Joi.alternatives(
@@ -26,16 +26,16 @@ export class Rate {
     }),
   };
 
-  public readonly deliveryService: DeliveryService;
-  public readonly shipDateTime?: DateTimeZone;
-  public readonly deliveryDateTime?: DateTimeZone;
-  public readonly isNegotiatedRate: boolean;
-  public readonly isTrackable: boolean;
-  public readonly charges: readonly Charge[];
-  public readonly totalAmount: MonetaryValue;
-  public readonly notes: readonly Note[];
-  public readonly package: RatePackage;
-  public readonly deliveryConfirmation?: DeliveryConfirmation;
+  public deliveryService: DeliveryService;
+  public shipDateTime?: DateTimeZone;
+  public deliveryDateTime?: DateTimeZone;
+  public isNegotiatedRate: boolean;
+  public isTrackable: boolean;
+  public charges: Charge[];
+  public totalAmount: MonetaryValue;
+  public notes: Note[];
+  public package: RatePackage;
+  public deliveryConfirmation?: DeliveryConfirmation;
 
   public constructor(pojo: RatePOJO, app: App) {
     this.deliveryService = app[_internal].references.lookup(pojo.deliveryService, DeliveryService);

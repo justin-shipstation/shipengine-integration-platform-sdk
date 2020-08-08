@@ -7,7 +7,7 @@ export type PickupServicePOJO = PickupServiceDefinition;
 export type PickupServiceIdentifierPOJO = DefinitionIdentifierPOJO;
 
 export class PickupService extends DefinitionIdentifier implements IPickupService {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "pickup service",
     schema: DefinitionIdentifier[_internal].schema.keys({
       name: Joi.string().trim().singleLine().min(1).max(100).required(),
@@ -16,13 +16,13 @@ export class PickupService extends DefinitionIdentifier implements IPickupServic
     }),
   };
 
-  private readonly [_private]: {
-    readonly app: App;
+  private [_private]: {
+    app: App;
   };
 
-  public readonly name: string;
-  public readonly description: string;
-  public readonly hasSandbox: boolean;
+  public name: string;
+  public description: string;
+  public hasSandbox: boolean;
 
   public constructor(pojo: PickupServicePOJO, app: App) {
     super(pojo);

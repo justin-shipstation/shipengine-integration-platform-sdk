@@ -4,7 +4,7 @@ import { Manifest } from "./manifest";
 import { NonManifestedShipment } from "./non-manifested-shipment";
 
 export class ManifestConfirmation {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "manifest confirmation",
     schema: Joi.object({
       manifests: Joi.array().min(1).items(Manifest[_internal].schema).required(),
@@ -12,8 +12,8 @@ export class ManifestConfirmation {
     }),
   };
 
-  public readonly manifests: readonly Manifest[];
-  public readonly notManifested: readonly NonManifestedShipment[];
+  public manifests: Manifest[];
+  public notManifested: NonManifestedShipment[];
 
   public constructor(pojo: ManifestConfirmationPOJO) {
     this.manifests = pojo.manifests.map((manifest) => new Manifest(manifest));

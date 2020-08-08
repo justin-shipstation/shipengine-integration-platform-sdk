@@ -9,13 +9,13 @@ const _private = Symbol("private fields");
 export interface DeliveryServicePOJO extends DeliveryServiceDefinition {
   originCountries: Country[];
   destinationCountries: Country[];
-  packaging: readonly PackagingPOJO[];
-  deliveryConfirmations?: readonly DeliveryConfirmationPOJO[];
+  packaging: PackagingPOJO[];
+  deliveryConfirmations?: DeliveryConfirmationPOJO[];
 }
 
 
 export class DeliveryService extends DefinitionIdentifier implements IDeliveryService {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "delivery service",
     schema: DefinitionIdentifier[_internal].schema.keys({
       name: Joi.string().trim().singleLine().min(1).max(100).required(),
@@ -41,31 +41,31 @@ export class DeliveryService extends DefinitionIdentifier implements IDeliverySe
   };
 
 
-  private readonly [_private]: {
-    readonly app: App;
+  private [_private]: {
+    app: App;
   };
 
-  public readonly name: string;
-  public readonly description: string;
-  public readonly class: DeliveryServiceClass;
-  public readonly grade: DeliveryServiceGrade;
-  public readonly fulfillmentService?: FulfillmentService;
-  public readonly serviceArea?: ServiceArea;
-  public readonly isConsolidationService: boolean;
-  public readonly allowsMultiplePackages: boolean;
-  public readonly isInsurable: boolean;
-  public readonly isTrackable: boolean;
-  public readonly manifestType: ManifestType;
-  public readonly supportsReturns: boolean;
-  public readonly hasSandbox: boolean;
-  public readonly labelFormats: readonly DocumentFormat[];
-  public readonly labelSizes: readonly DocumentSize[];
-  public readonly originCountries: readonly Country[];
-  public readonly destinationCountries: readonly Country[];
-  public readonly packaging: readonly Packaging[];
-  public readonly deliveryConfirmations: readonly DeliveryConfirmation[];
+  public name: string;
+  public description: string;
+  public class: DeliveryServiceClass;
+  public grade: DeliveryServiceGrade;
+  public fulfillmentService?: FulfillmentService;
+  public serviceArea?: ServiceArea;
+  public isConsolidationService: boolean;
+  public allowsMultiplePackages: boolean;
+  public isInsurable: boolean;
+  public isTrackable: boolean;
+  public manifestType: ManifestType;
+  public supportsReturns: boolean;
+  public hasSandbox: boolean;
+  public labelFormats: DocumentFormat[];
+  public labelSizes: DocumentSize[];
+  public originCountries: Country[];
+  public destinationCountries: Country[];
+  public packaging: Packaging[];
+  public deliveryConfirmations: DeliveryConfirmation[];
 
-  public get countries(): readonly Country[] {
+  public get countries(): Country[] {
     let countries = new Set(this.originCountries.concat(this.destinationCountries));
     return Object.freeze([...countries]);
   }

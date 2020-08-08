@@ -8,12 +8,12 @@ export interface NewManifestPOJO {
   shipFrom?: AddressPOJO;
   openDateTime: DateTimeZonePOJO | Date | string;
   closeDateTime: DateTimeZonePOJO | Date | string;
-  shipments: readonly ShipmentIdentifierPOJO[];
+  shipments: ShipmentIdentifierPOJO[];
 }
 
 
 export class NewManifest implements INewManifest {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "manifest",
     schema: Joi.object({
       shipFrom: Address[_internal].schema.required(),
@@ -23,10 +23,10 @@ export class NewManifest implements INewManifest {
     }),
   };
 
-  public readonly shipFrom?: Address;
-  public readonly openDateTime: DateTimeZone;
-  public readonly closeDateTime: DateTimeZone;
-  public readonly shipments: readonly ShipmentIdentifier[];
+  public shipFrom?: Address;
+  public openDateTime: DateTimeZone;
+  public closeDateTime: DateTimeZone;
+  public shipments: ShipmentIdentifier[];
 
   public constructor(pojo: NewManifestPOJO, carrier: CarrierApp) {
     this.shipFrom = pojo.shipFrom && new Address(pojo.shipFrom);

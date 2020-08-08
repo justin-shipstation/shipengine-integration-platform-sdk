@@ -13,7 +13,7 @@ export interface TransactionPOJO<T extends object = object> {
 
 
 export class Transaction<T extends object = object> implements ITransaction {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "transaction",
     schema: Joi.object({
       id: Joi.string().uuid().required(),
@@ -22,12 +22,12 @@ export class Transaction<T extends object = object> implements ITransaction {
     }),
   };
 
-  private readonly [_private]: {
+  private [_private]: {
     session: T;
   };
 
-  public readonly id: UUID;
-  public readonly useSandbox: boolean;
+  public id: UUID;
+  public useSandbox: boolean;
 
   public get session(): T {
     return this[_private].session;

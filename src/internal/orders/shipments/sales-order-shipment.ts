@@ -10,12 +10,12 @@ export interface SalesOrderShipmentPOJO extends ShipmentIdentifierPOJO {
   shipFrom?: AddressWithContactInfoPOJO;
   shipTo: AddressWithContactInfoPOJO;
   shipDateTime: DateTimeZonePOJO | Date | string;
-  contents: readonly SalesOrderPackageItemPOJO[];
+  contents: SalesOrderPackageItemPOJO[];
 }
 
 
 export class SalesOrderShipment extends ShipmentIdentifierBase implements ISalesOrderShipment {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: ShipmentIdentifier[_internal].schema.keys({
       trackingURL: Joi.alternatives(Joi.object().website(), Joi.string().website()),
@@ -27,12 +27,12 @@ export class SalesOrderShipment extends ShipmentIdentifierBase implements ISales
     }),
   };
 
-  public readonly trackingURL?: URL;
-  public readonly fulfillmentService?: string;
-  public readonly shipFrom?: AddressWithContactInfo;
-  public readonly shipTo: AddressWithContactInfo;
-  public readonly shipDateTime: DateTimeZone;
-  public readonly contents: readonly SalesOrderPackageItem[];
+  public trackingURL?: URL;
+  public fulfillmentService?: string;
+  public shipFrom?: AddressWithContactInfo;
+  public shipTo: AddressWithContactInfo;
+  public shipDateTime: DateTimeZone;
+  public contents: SalesOrderPackageItem[];
 
 
   public constructor(pojo: SalesOrderShipmentPOJO) {

@@ -13,7 +13,7 @@ export interface SalesOrderPackageItemPOJO {
 
 
 export class SalesOrderPackageItem implements ISalesOrderPackageItem {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "package item",
     schema: Joi.object({
       salesOrder: SalesOrderIdentifier[_internal].schema.unknown(true).required(),
@@ -23,10 +23,10 @@ export class SalesOrderPackageItem implements ISalesOrderPackageItem {
     }),
   };
 
-  public readonly salesOrder: SalesOrderIdentifier;
-  public readonly salesOrderItem: SalesOrderItemIdentifier;
-  public readonly product?: ProductIdentifier;
-  public readonly quantity: Quantity;
+  public salesOrder: SalesOrderIdentifier;
+  public salesOrderItem: SalesOrderItemIdentifier;
+  public product?: ProductIdentifier;
+  public quantity: Quantity;
 
   public constructor(pojo: SalesOrderPackageItemPOJO) {
     this.salesOrder = new SalesOrderIdentifier(pojo.salesOrder);

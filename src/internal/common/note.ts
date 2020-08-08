@@ -3,7 +3,7 @@ import { hideAndFreeze, _internal } from "./utils";
 import { Joi } from "./validation";
 
 export class Note implements INote {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "note",
     schema: Joi.object({
       type: Joi.string().enum(NoteType).required(),
@@ -19,8 +19,8 @@ export class Note implements INote {
     ),
   };
 
-  public readonly type: NoteType;
-  public readonly text: string;
+  public type: NoteType;
+  public text: string;
 
   public constructor(pojo: NotePOJO) {
 

@@ -25,8 +25,8 @@ const _private = Symbol("private fields");
 export interface CarrierAppPOJO extends CarrierAppDefinition, AppPOJO {
   connectionForm: FormPOJO;
   settingsForm?: FormPOJO;
-  deliveryServices: readonly DeliveryServicePOJO[];
-  pickupServices?: readonly PickupServicePOJO[];
+  deliveryServices: DeliveryServicePOJO[];
+  pickupServices?: PickupServicePOJO[];
   connect?: Connect;
   createShipment?: CreateShipment;
   cancelShipments?: CancelShipments;
@@ -41,7 +41,7 @@ export interface CarrierAppPOJO extends CarrierAppDefinition, AppPOJO {
 export class CarrierApp extends ConnectionApp {
   // #region Private/Internal Fields
 
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "ShipEngine Integration Platform carrier app",
     schema: ConnectionApp[_internal].schema.keys({
       manifestLocations: Joi.string().enum(ManifestLocation)
@@ -63,27 +63,27 @@ export class CarrierApp extends ConnectionApp {
     }),
   };
 
-  private readonly [_private]: {
-    readonly createShipment?: CreateShipment;
-    readonly cancelShipments?: CancelShipments;
-    readonly rateShipment?: RateShipment;
-    readonly trackShipment?: TrackShipment;
-    readonly createManifest?: CreateManifest;
-    readonly schedulePickup?: SchedulePickup;
-    readonly cancelPickups?: CancelPickups;
+  private [_private]: {
+    createShipment?: CreateShipment;
+    cancelShipments?: CancelShipments;
+    rateShipment?: RateShipment;
+    trackShipment?: TrackShipment;
+    createManifest?: CreateManifest;
+    schedulePickup?: SchedulePickup;
+    cancelPickups?: CancelPickups;
   };
 
   // #endregion
   // #region Public Fields
 
-  public readonly type: AppType;
-  public readonly manifestLocations?: ManifestLocation;
-  public readonly manifestShipments?: ManifestShipment;
-  public readonly manifestType: ManifestType;
-  public readonly deliveryServices: readonly DeliveryService[];
-  public readonly pickupServices: readonly PickupService[];
-  public readonly supportsReturns: boolean;
-  public readonly trackingURLTemplate?: string;
+  public type: AppType;
+  public manifestLocations?: ManifestLocation;
+  public manifestShipments?: ManifestShipment;
+  public manifestType: ManifestType;
+  public deliveryServices: DeliveryService[];
+  public pickupServices: PickupService[];
+  public supportsReturns: boolean;
+  public trackingURLTemplate?: string;
 
   public get serviceArea(): ServiceArea {
     return getMaxServiceArea(this.deliveryServices);
@@ -108,7 +108,7 @@ export class CarrierApp extends ConnectionApp {
     return found;
   }
 
-  public get labelFormats(): readonly DocumentFormat[] {
+  public get labelFormats(): DocumentFormat[] {
     let labelFormats = new Set<DocumentFormat>();
     for (let service of this.deliveryServices) {
       for (let labelFormat of service.labelFormats) {
@@ -118,7 +118,7 @@ export class CarrierApp extends ConnectionApp {
     return Object.freeze([...labelFormats]);
   }
 
-  public get labelSizes(): readonly DocumentSize[] {
+  public get labelSizes(): DocumentSize[] {
     let labelSizes = new Set<DocumentSize>();
     for (let service of this.deliveryServices) {
       for (let labelSize of service.labelSizes) {
@@ -128,12 +128,12 @@ export class CarrierApp extends ConnectionApp {
     return Object.freeze([...labelSizes]);
   }
 
-  public get countries(): readonly Country[] {
+  public get countries(): Country[] {
     let countries = new Set(this.originCountries.concat(this.destinationCountries));
     return Object.freeze([...countries]);
   }
 
-  public get originCountries(): readonly Country[] {
+  public get originCountries(): Country[] {
     let countries = new Set<Country>();
     for (let service of this.deliveryServices) {
       for (let country of service.originCountries) {
@@ -143,7 +143,7 @@ export class CarrierApp extends ConnectionApp {
     return Object.freeze([...countries]);
   }
 
-  public get destinationCountries(): readonly Country[] {
+  public get destinationCountries(): Country[] {
     let countries = new Set<Country>();
     for (let service of this.deliveryServices) {
       for (let country of service.destinationCountries) {
@@ -153,7 +153,7 @@ export class CarrierApp extends ConnectionApp {
     return Object.freeze([...countries]);
   }
 
-  public get packaging(): readonly Packaging[] {
+  public get packaging(): Packaging[] {
     let packaging = new Map<string, Packaging>();
     for (let service of this.deliveryServices) {
       for (let parcel of service.packaging) {
@@ -163,7 +163,7 @@ export class CarrierApp extends ConnectionApp {
     return Object.freeze(Array.from(packaging.values()));
   }
 
-  public get deliveryConfirmations(): readonly DeliveryConfirmation[] {
+  public get deliveryConfirmations(): DeliveryConfirmation[] {
     let deliveryConfirmations = new Map<string, DeliveryConfirmation>();
     for (let service of this.deliveryServices) {
       for (let deliveryConfirmation of service.deliveryConfirmations) {

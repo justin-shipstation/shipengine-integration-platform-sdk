@@ -11,7 +11,7 @@ export interface AppPOJO extends AppDefinition {
 
 
 export abstract class App {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "ShipEngine Integration Platform app",
     schema: Joi.object({
       id: Joi.string().uuid().required(),
@@ -25,14 +25,14 @@ export abstract class App {
     }),
   };
 
-  public readonly [_internal] = {
+  public [_internal] = {
     references: new ReferenceMap(),
   };
 
-  public abstract readonly type: AppType;
-  public readonly id: UUID;
-  public readonly manifest: AppManifest;
-  public readonly sdkVersion: number;
+  public abstract type: AppType;
+  public id: UUID;
+  public manifest: AppManifest;
+  public sdkVersion: number;
 
   public constructor(pojo: AppPOJO) {
     this.id = pojo.id;

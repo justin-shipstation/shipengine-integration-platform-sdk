@@ -14,12 +14,12 @@ export interface NewPackagePOJO {
   isNonMachinable?: boolean;
   label: NewLabelPOJO;
   customs?: CustomsPOJO;
-  contents?: readonly PackageItemPOJO[];
+  contents?: PackageItemPOJO[];
 }
 
 
 export class NewPackage implements INewPackage {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "package",
     schema: Joi.object({
       packaging: Joi.alternatives(
@@ -37,15 +37,15 @@ export class NewPackage implements INewPackage {
     }),
   };
 
-  public readonly packaging: Packaging;
-  public readonly dimensions?: Dimensions;
-  public readonly weight?: Weight;
-  public readonly insuredValue: MonetaryValue;
-  public readonly containsAlcohol: boolean;
-  public readonly isNonMachinable: boolean;
-  public readonly label: NewLabel;
-  public readonly contents: readonly PackageItem[];
-  public readonly customs: Customs;
+  public packaging: Packaging;
+  public dimensions?: Dimensions;
+  public weight?: Weight;
+  public insuredValue: MonetaryValue;
+  public containsAlcohol: boolean;
+  public isNonMachinable: boolean;
+  public label: NewLabel;
+  public contents: PackageItem[];
+  public customs: Customs;
 
   public constructor(pojo: NewPackagePOJO, app: App) {
     this.packaging = app[_internal].references.lookup(pojo.packaging, Packaging);

@@ -2,7 +2,7 @@ import { ShipmentStatus, TrackingEvent as TrackingEventPOJO } from "../../../pub
 import { DateTimeZone, hideAndFreeze, Joi, Note, PartialAddress, PersonName, _internal } from "../../common";
 
 export class TrackingEvent {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "tracking event",
     schema: Joi.object({
       name: Joi.string().trim().singleLine().allow("").max(100),
@@ -17,15 +17,15 @@ export class TrackingEvent {
     }),
   };
 
-  public readonly name: string;
-  public readonly dateTime: DateTimeZone;
-  public readonly status: ShipmentStatus;
-  public readonly isError: boolean;
-  public readonly code: string;
-  public readonly description: string;
-  public readonly address?: PartialAddress;
-  public readonly signer?: PersonName;
-  public readonly notes: readonly Note[];
+  public name: string;
+  public dateTime: DateTimeZone;
+  public status: ShipmentStatus;
+  public isError: boolean;
+  public code: string;
+  public description: string;
+  public address?: PartialAddress;
+  public signer?: PersonName;
+  public notes: Note[];
 
   public constructor(pojo: TrackingEventPOJO) {
     this.name = pojo.name || "";

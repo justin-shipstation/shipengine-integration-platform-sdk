@@ -5,7 +5,7 @@ import { PackageTrackingInfo } from "./package-tracking-info";
 import { TrackingEvent } from "./tracking-event";
 
 export class TrackingInfo extends ShipmentIdentifierBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: Joi.object({
       deliveryDateTime: DateTimeZone[_internal].schema,
@@ -14,9 +14,9 @@ export class TrackingInfo extends ShipmentIdentifierBase {
     }),
   };
 
-  public readonly deliveryDateTime?: DateTimeZone;
-  public readonly packages: readonly PackageTrackingInfo[];
-  public readonly events: readonly TrackingEvent[];
+  public deliveryDateTime?: DateTimeZone;
+  public packages: PackageTrackingInfo[];
+  public events: TrackingEvent[];
 
   public get package(): PackageTrackingInfo {
     return this.packages[0];

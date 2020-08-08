@@ -4,7 +4,7 @@ import { Packaging } from "../packaging";
 
 
 export interface PackageRateCriteriaPOJO {
-  packaging?: ReadonlyArray<PackagingIdentifierPOJO | string>;
+  packaging?: PackagingIdentifierPOJO | string;
   dimensions?: DimensionsPOJO;
   weight?: WeightPOJO;
   insuredValue?: MonetaryValuePOJO;
@@ -14,7 +14,7 @@ export interface PackageRateCriteriaPOJO {
 
 
 export class PackageRateCriteria implements IPackageRateCriteria {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "package",
     schema: Joi.object({
       packaging: Joi.array()
@@ -29,12 +29,12 @@ export class PackageRateCriteria implements IPackageRateCriteria {
     }),
   };
 
-  public readonly packaging: readonly Packaging[];
-  public readonly dimensions?: Dimensions;
-  public readonly weight?: Weight;
-  public readonly insuredValue?: MonetaryValue;
-  public readonly containsAlcohol: boolean;
-  public readonly isNonMachinable: boolean;
+  public packaging: Packaging[];
+  public dimensions?: Dimensions;
+  public weight?: Weight;
+  public insuredValue?: MonetaryValue;
+  public containsAlcohol: boolean;
+  public isNonMachinable: boolean;
 
   public constructor(pojo: PackageRateCriteriaPOJO, app: App) {
     this.packaging = (pojo.packaging || [])

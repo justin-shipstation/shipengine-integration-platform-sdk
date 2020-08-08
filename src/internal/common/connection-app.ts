@@ -17,7 +17,7 @@ export interface ConnectionAppPOJO extends ConnectionAppDefinition, AppPOJO {
 
 
 export abstract class ConnectionApp extends App {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "ShipEngine Integration Platform app",
     schema: App[_internal].schema.keys({
       name: Joi.string().trim().singleLine().min(1).max(100).required(),
@@ -31,17 +31,17 @@ export abstract class ConnectionApp extends App {
     }),
   };
 
-  private readonly [_private]: {
-    readonly connect?: Connect;
+  private [_private]: {
+    connect?: Connect;
   };
 
-  public readonly name: string;
-  public readonly description: string;
-  public readonly websiteURL: URL;
-  public readonly logo: FilePath;
-  public readonly icon: FilePath;
-  public readonly connectionForm: Form;
-  public readonly settingsForm?: Form;
+  public name: string;
+  public description: string;
+  public websiteURL: URL;
+  public logo: FilePath;
+  public icon: FilePath;
+  public connectionForm: Form;
+  public settingsForm?: Form;
 
   public constructor(pojo: ConnectionAppPOJO) {
     super(pojo);

@@ -5,8 +5,8 @@ import { Joi } from "../validation";
 import { DateTimeZone } from "./date-time-zone";
 
 export abstract class TimeRangeBase implements ITimeRange {
-  public readonly startDateTime: DateTimeZone;
-  public readonly endDateTime: DateTimeZone;
+  public startDateTime: DateTimeZone;
+  public endDateTime: DateTimeZone;
 
   public constructor(pojo: TimeRangePOJO) {
     this.startDateTime = new DateTimeZone(pojo.startDateTime);
@@ -25,7 +25,7 @@ export abstract class TimeRangeBase implements ITimeRange {
 
 
 export class TimeRange extends TimeRangeBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "time range",
     schema: Joi.object({
       startDateTime: DateTimeZone[_internal].schema.required(),

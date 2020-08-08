@@ -9,17 +9,17 @@ export interface PickupCancellationPOJO {
   identifiers?: Identifiers;
   pickupService: PickupServiceIdentifierPOJO | string;
   reason: PickupCancellationReason;
-  notes?: readonly NotePOJO[];
+  notes?: NotePOJO[];
   address: AddressPOJO;
   contact: ContactInfoPOJO;
-  timeWindows: readonly TimeRangePOJO[];
-  shipments: readonly PickupShipmentPOJO[];
+  timeWindows: TimeRangePOJO[];
+  shipments: PickupShipmentPOJO[];
   metadata?: object;
 }
 
 
 export class PickupCancellation implements IPickupCancellation {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "pickup",
     schema: Joi.object({
       cancellationID: Joi.string().uuid().required(),
@@ -39,17 +39,17 @@ export class PickupCancellation implements IPickupCancellation {
     }),
   };
 
-  public readonly cancellationID: UUID;
-  public readonly id: string;
-  public readonly identifiers: Identifiers;
-  public readonly pickupService: PickupService;
-  public readonly reason: PickupCancellationReason;
-  public readonly notes: readonly Note[];
-  public readonly address: Address;
-  public readonly contact: ContactInfo;
-  public readonly timeWindows: readonly TimeRange[];
-  public readonly shipments: readonly PickupShipment[];
-  public readonly metadata: object;
+  public cancellationID: UUID;
+  public id: string;
+  public identifiers: Identifiers;
+  public pickupService: PickupService;
+  public reason: PickupCancellationReason;
+  public notes: Note[];
+  public address: Address;
+  public contact: ContactInfo;
+  public timeWindows: TimeRange[];
+  public shipments: PickupShipment[];
+  public metadata: object;
 
   public constructor(pojo: PickupCancellationPOJO, app: App) {
     this.cancellationID = pojo.cancellationID;

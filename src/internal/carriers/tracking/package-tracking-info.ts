@@ -3,7 +3,7 @@ import { App, DefinitionIdentifier, Dimensions, hideAndFreeze, Joi, Weight, _int
 import { Packaging } from "../packaging";
 
 export class PackageTrackingInfo {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "package",
     schema: Joi.object({
       packaging: Joi.alternatives(
@@ -15,9 +15,9 @@ export class PackageTrackingInfo {
     }),
   };
 
-  public readonly packaging?: Packaging;
-  public readonly dimensions?: Dimensions;
-  public readonly weight?: Weight;
+  public packaging?: Packaging;
+  public dimensions?: Dimensions;
+  public weight?: Weight;
 
   public constructor(pojo: PackageTrackingInfoPOJO, app: App) {
     this.packaging = app[_internal].references.lookup(pojo.packaging, Packaging);

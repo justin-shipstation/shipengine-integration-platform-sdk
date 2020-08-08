@@ -3,7 +3,7 @@ import { hideAndFreeze, Joi, Note, _internal } from "../../common";
 import { ShipmentIdentifier } from "../shipments/shipment-identifier";
 
 export class NonManifestedShipment {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "manifest confirmation",
     schema: ShipmentIdentifier[_internal].schema.keys({
       code: Joi.string().trim().singleLine().allow("").max(100),
@@ -12,9 +12,9 @@ export class NonManifestedShipment {
     }),
   };
 
-  public readonly code: string;
-  public readonly description: string;
-  public readonly notes: readonly Note[];
+  public code: string;
+  public description: string;
+  public notes: Note[];
 
   public constructor(pojo: NonManifestedShipmentPOJO) {
     this.code = pojo.code || "";

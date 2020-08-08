@@ -19,7 +19,7 @@ export interface RateCriteriaPOJO {
 
 
 export class RateCriteria implements IRateCriteria {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: Joi.object({
       deliveryService: Joi.alternatives(
@@ -42,18 +42,18 @@ export class RateCriteria implements IRateCriteria {
     }),
   };
 
-  public readonly deliveryService?: DeliveryService;
-  public readonly fulfillmentService?: FulfillmentService;
-  public readonly shipDateTime: DateTimeZone;
-  public readonly deliveryDateTime?: DateTimeZone;
-  public readonly shipFrom: AddressWithContactInfo;
-  public readonly shipTo: AddressWithContactInfo;
-  public readonly totalInsuredValue?: MonetaryValue;
-  public readonly package: PackageRateCriteria;
-  public readonly deliveryConfirmation?: DeliveryConfirmation;
+  public deliveryService?: DeliveryService;
+  public fulfillmentService?: FulfillmentService;
+  public shipDateTime: DateTimeZone;
+  public deliveryDateTime?: DateTimeZone;
+  public shipFrom: AddressWithContactInfo;
+  public shipTo: AddressWithContactInfo;
+  public totalInsuredValue?: MonetaryValue;
+  public package: PackageRateCriteria;
+  public deliveryConfirmation?: DeliveryConfirmation;
 
-  public readonly returns: {
-    readonly isReturn: boolean;
+  public returns: {
+    isReturn: boolean;
   };
 
   public constructor(pojo: RateCriteriaPOJO, app: App) {

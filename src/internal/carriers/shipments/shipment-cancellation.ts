@@ -9,7 +9,7 @@ export interface ShipmentCancellationPOJO extends ShipmentIdentifierPOJO {
 
 
 export class ShipmentCancellation extends ShipmentIdentifierBase implements IShipmentCancellation {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: ShipmentIdentifier[_internal].schema.keys({
       cancellationID: Joi.string().uuid().required(),
@@ -17,8 +17,8 @@ export class ShipmentCancellation extends ShipmentIdentifierBase implements IShi
     }),
   };
 
-  public readonly cancellationID: UUID;
-  public readonly metadata: object;
+  public cancellationID: UUID;
+  public metadata: object;
 
   public constructor(pojo: ShipmentCancellationPOJO) {
     super(pojo);

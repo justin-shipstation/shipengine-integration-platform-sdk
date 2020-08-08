@@ -8,7 +8,7 @@ import { Joi } from "./validation";
 /**
  * Calculates the total of an array of charges
  */
-export function calculateTotalCharges(charges: readonly Charge[]): MonetaryValue {
+export function calculateTotalCharges(charges: Charge[]): MonetaryValue {
   try {
     let insuredValues = charges.map((charge) => charge.amount);
     return MonetaryValue.sum(insuredValues);
@@ -32,7 +32,7 @@ export function calculateTotalCharges(charges: readonly Charge[]): MonetaryValue
  * An itemized charge or credit for a shipment or sales order
  */
 export class Charge implements ICharge {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "charge",
     schema: Joi.object({
       name: Joi.string().trim().singleLine().allow("").max(100),
@@ -41,9 +41,9 @@ export class Charge implements ICharge {
     }),
   };
 
-  public readonly name: string;
-  public readonly type: ChargeType;
-  public readonly amount: MonetaryValue;
+  public name: string;
+  public type: ChargeType;
+  public amount: MonetaryValue;
 
   public constructor(pojo: ChargePOJO) {
     this.name = pojo.name || "";

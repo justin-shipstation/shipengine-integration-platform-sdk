@@ -3,7 +3,7 @@ import { App, DefinitionIdentifier, hideAndFreeze, Joi, _internal } from "../../
 import { Packaging } from "../packaging";
 
 export class RatePackage {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "package",
     schema: Joi.object({
       packaging: Joi.alternatives(
@@ -13,7 +13,7 @@ export class RatePackage {
     }),
   };
 
-  public readonly packaging: Packaging;
+  public packaging: Packaging;
 
   public constructor(pojo: RatePackagePOJO, app: App) {
     this.packaging = app[_internal].references.lookup(pojo.packaging, Packaging);

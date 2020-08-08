@@ -12,7 +12,7 @@ export interface FormPOJO extends FormDefinition {
 
 
 export class Form {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "form",
     schema: Joi.object({
       dataSchema: Joi.object().required(),
@@ -20,8 +20,8 @@ export class Form {
     })
   };
 
-  public readonly dataSchema: JSONSchema6;
-  public readonly uiSchema: UiSchema;
+  public dataSchema: JSONSchema6;
+  public uiSchema: UiSchema;
 
   public constructor(pojo: FormPOJO) {
     this.dataSchema = pojo.dataSchema;

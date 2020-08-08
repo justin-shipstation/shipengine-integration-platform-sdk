@@ -2,7 +2,7 @@ import { CancellationStatus, PickupCancellationOutcome as PickupCancellationOutc
 import { hideAndFreeze, Joi, Note, _internal } from "../../common";
 
 export class PickupCancellationOutcome {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "pickup",
     schema: Joi.object({
       cancellationID: Joi.string().uuid().required(),
@@ -15,13 +15,13 @@ export class PickupCancellationOutcome {
     }),
   };
 
-  public readonly cancellationID: UUID;
-  public readonly status: CancellationStatus;
-  public readonly confirmationNumber: string;
-  public readonly code: string;
-  public readonly description: string;
-  public readonly notes: readonly Note[];
-  public readonly metadata: object;
+  public cancellationID: UUID;
+  public status: CancellationStatus;
+  public confirmationNumber: string;
+  public code: string;
+  public description: string;
+  public notes: Note[];
+  public metadata: object;
 
   public constructor(pojo: PickupCancellationOutcomePOJO) {
     this.cancellationID = pojo.cancellationID;

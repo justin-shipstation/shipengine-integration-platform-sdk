@@ -2,11 +2,11 @@ import { Document as DocumentPOJO, DocumentFormat, DocumentSize, DocumentType, E
 import { error, hideAndFreeze, Joi, _internal } from "../../common";
 
 export abstract class DocumentBase {
-  public readonly name: string;
-  public readonly type: DocumentType;
-  public readonly size: DocumentSize;
-  public readonly format: DocumentFormat;
-  public readonly data: Buffer;
+  public name: string;
+  public type: DocumentType;
+  public size: DocumentSize;
+  public format: DocumentFormat;
+  public data: Buffer;
 
   public constructor(pojo: DocumentPOJO) {
     this.name = getDocumentName(pojo);
@@ -22,7 +22,7 @@ export abstract class DocumentBase {
 }
 
 export class Document extends DocumentBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "document",
     schema: Joi.object({
       name: Joi.string().trim().singleLine().allow("").max(100),

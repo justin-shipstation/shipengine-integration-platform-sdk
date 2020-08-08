@@ -4,7 +4,7 @@ import { Document } from "../documents/document";
 import { ShipmentIdentifier } from "../shipments/shipment-identifier";
 
 export class Manifest {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "manifest",
     schema: Joi.object({
       id: Joi.string().trim().singleLine().allow("").max(100),
@@ -17,12 +17,12 @@ export class Manifest {
     }),
   };
 
-  public readonly id: string;
-  public readonly identifiers: Identifiers;
-  public readonly shipments: readonly ShipmentIdentifier[];
-  public readonly document?: Document;
-  public readonly notes: readonly Note[];
-  public readonly metadata: object;
+  public id: string;
+  public identifiers: Identifiers;
+  public shipments: ShipmentIdentifier[];
+  public document?: Document;
+  public notes: Note[];
+  public metadata: object;
 
   public constructor(pojo: ManifestPOJO) {
     this.id = pojo.id || "";

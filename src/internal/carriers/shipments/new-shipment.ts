@@ -15,13 +15,13 @@ export interface NewShipmentPOJO {
     isReturn?: boolean;
     rmaNumber?: string;
   };
-  packages: readonly NewPackagePOJO[];
+  packages: NewPackagePOJO[];
   deliveryConfirmation?: DeliveryConfirmationIdentifierPOJO | DeliveryConfirmationType;
 }
 
 
 export class NewShipment implements INewShipment {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: Joi.object({
       deliveryService: Joi.alternatives(
@@ -44,24 +44,24 @@ export class NewShipment implements INewShipment {
     }),
   };
 
-  public readonly deliveryService: DeliveryService;
-  public readonly shipFrom: AddressWithContactInfo;
-  public readonly shipTo: AddressWithContactInfo;
-  public readonly returnTo: AddressWithContactInfo;
-  public readonly shipDateTime: DateTimeZone;
-  public readonly totalInsuredValue: MonetaryValue;
-  public readonly deliveryConfirmation?: DeliveryConfirmation;
+  public deliveryService: DeliveryService;
+  public shipFrom: AddressWithContactInfo;
+  public shipTo: AddressWithContactInfo;
+  public returnTo: AddressWithContactInfo;
+  public shipDateTime: DateTimeZone;
+  public totalInsuredValue: MonetaryValue;
+  public deliveryConfirmation?: DeliveryConfirmation;
 
   public get isNonMachinable(): boolean {
     return this.packages.some((pkg) => pkg.isNonMachinable);
   }
 
-  public readonly returns: {
-    readonly isReturn: boolean;
-    readonly rmaNumber: string;
+  public returns: {
+    isReturn: boolean;
+    rmaNumber: string;
   };
 
-  public readonly packages: readonly NewPackage[];
+  public packages: NewPackage[];
 
   public get package(): NewPackage {
     return this.packages[0];

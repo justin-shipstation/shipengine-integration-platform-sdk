@@ -6,7 +6,7 @@ import { PackageConfirmation } from "../packages/package-confirmation";
 import { ShipmentIdentifier, ShipmentIdentifierBase } from "./shipment-identifier";
 
 export class ShipmentConfirmation extends ShipmentIdentifierBase {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "shipment",
     schema: ShipmentIdentifier[_internal].schema.keys({
       label: Label[_internal].schema.required(),
@@ -17,12 +17,12 @@ export class ShipmentConfirmation extends ShipmentIdentifierBase {
     }),
   };
 
-  public readonly label: Label;
-  public readonly form?: Document;
-  public readonly deliveryDateTime?: DateTimeZone;
-  public readonly charges: readonly Charge[];
-  public readonly totalAmount: MonetaryValue;
-  public readonly packages: readonly PackageConfirmation[];
+  public label: Label;
+  public form?: Document;
+  public deliveryDateTime?: DateTimeZone;
+  public charges: Charge[];
+  public totalAmount: MonetaryValue;
+  public packages: PackageConfirmation[];
 
   public get isTrackable(): boolean {
     return Boolean(this.trackingNumber);

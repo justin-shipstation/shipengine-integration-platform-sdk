@@ -9,7 +9,7 @@ export interface NewLabelPOJO {
 
 
 export class NewLabel implements INewLabel {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "label",
     schema: Joi.object({
       format: Joi.string().enum(DocumentFormat).required(),
@@ -20,9 +20,9 @@ export class NewLabel implements INewLabel {
     }),
   };
 
-  public readonly format: DocumentFormat;
-  public readonly size: DocumentSize;
-  public readonly referenceFields: readonly string[];
+  public format: DocumentFormat;
+  public size: DocumentSize;
+  public referenceFields: string[];
 
   public constructor(pojo: NewLabelPOJO) {
     this.format = pojo.format;

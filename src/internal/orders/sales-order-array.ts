@@ -3,12 +3,12 @@ import { hideAndFreeze, Joi, _internal } from "../common";
 
 export class SalesOrderArray extends Array {
   // TODO: Add better validation and unit tests
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "sales order array",
     schema: Joi.array()
   };
 
-  public readonly paging: SalesOrderPaging;
+  public paging: SalesOrderPaging;
 
   public constructor(pojo: SalesOrderArrayPOJO) {
     super();

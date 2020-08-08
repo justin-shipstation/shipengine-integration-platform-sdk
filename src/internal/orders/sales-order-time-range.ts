@@ -8,7 +8,7 @@ export interface SalesOrderTimeRangePOJO extends TimeRangePOJO {
 
 
 export class SalesOrderTimeRange extends TimeRangeBase implements ISalesOrderTimeRange {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "time range",
     schema: TimeRange[_internal].schema.keys({
       paging: Joi.object({
@@ -20,11 +20,11 @@ export class SalesOrderTimeRange extends TimeRangeBase implements ISalesOrderTim
     })
   };
 
-  public readonly paging: {
-    readonly pageSize: number;
-    readonly pageNumber: number;
-    readonly pageCount: number;
-    readonly cursor?: string;
+  public paging: {
+    pageSize: number;
+    pageNumber: number;
+    pageCount: number;
+    cursor?: string;
   };
 
   public constructor(pojo: SalesOrderTimeRangePOJO) {

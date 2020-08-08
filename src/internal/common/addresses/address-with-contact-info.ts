@@ -5,14 +5,14 @@ import { ContactInfo } from "./contact-info";
 import { PersonName } from "./person-name";
 
 export class AddressWithContactInfo extends AddressBase implements IAddressWithContactInfo {
-  public static readonly [_internal] = {
+  public static [_internal] = {
     label: "address",
     schema: Address[_internal].schema.concat(ContactInfo[_internal].schema),
   };
 
-  public readonly name: PersonName;
-  public readonly email: string;
-  public readonly phoneNumber: string;
+  public name: PersonName;
+  public email: string;
+  public phoneNumber: string;
 
   public constructor(pojo: AddressWithContactInfoPOJO) {
     super(pojo);
