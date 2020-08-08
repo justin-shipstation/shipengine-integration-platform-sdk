@@ -1,7 +1,6 @@
 import type { Dimensions, MonetaryValue, Weight } from "../../common";
 import { Customs } from "../customs/customs";
 import type { NewLabel } from "../documents/new-label";
-import type { Packaging } from "../packaging";
 import type { PackageItem } from "./package-item";
 
 /**
@@ -11,7 +10,7 @@ export interface NewPackage {
   /**
    * The packaging used
    */
-  packaging: Packaging;
+  packaging: string;
 
   /**
    * The package dimensions

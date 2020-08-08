@@ -1,4 +1,4 @@
-import type { Definition, DefinitionIdentifier } from "../common";
+import type { Definition } from "../common";
 
 
 /**
@@ -31,36 +31,4 @@ export interface PackagingDefinition extends Definition {
 /**
  * Identifies a type of packaging
  */
-export type PackagingIdentifier = DefinitionIdentifier;
-
-
-/**
- * Identifies a type of packaging
- */
 export type PackagingIdentifier = Definition;
-
-
-/**
- * Describes a type of packaging
- */
-export interface Packaging extends PackagingIdentifier {
-  /**
-   * The user-friendly name for this packaging (e.g. "Flat-Rate Box", "Large Padded Envelope")
-   */
-  name: string;
-
-  /**
-   * A short, user-friendly description of the packaging
-   */
-  description: string;
-
-  /**
-   * Indicates whether the weight must be specified when using this packaging
-   */
-  requiresWeight: boolean;
-
-  /**
-   * Indicates whether the dimensions must be specified when using this packaging
-   */
-  requiresDimensions: boolean;
-}

@@ -1,6 +1,4 @@
 import type { Dimensions, MonetaryValue, Weight } from "../../common";
-import type { Packaging } from "../packaging";
-
 
 /**
  * The package details needed for a rate quote

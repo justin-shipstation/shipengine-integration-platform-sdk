@@ -1,28 +1,11 @@
 import type { TimeRange } from "../common";
 
-
 /**
  * Specifies a date/time range to retrieve sales orders for
  */
 export interface SalesOrderTimeRange extends TimeRange {
   paging: Readonly<SalesOrderPaging>;
 }
-
-
-export interface SalesOrderPaging {
-  /** The desired maximum number of items to return */
-  pageSize: number;
-
-  /** The desired page number to return */
-  pageNumber: number;
-
-  /** The desired maximum number of pages to return */
-  pageCount: number;
-
-  /** Identifies the next page of results to return */
-  cursor?: string;
-}
-
 
 export interface SalesOrderPaging {
   /** The number of items per page */

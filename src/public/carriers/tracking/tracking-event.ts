@@ -1,4 +1,4 @@
-import type { Address, DateTimeZone, Note, PersonName } from "../../common";
+import type { Address, DateTimeZone, Note } from "../../common";
 import type { ShipmentStatus } from "../enums";
 
 /**
@@ -46,7 +46,7 @@ export interface TrackingEvent {
    * The name of the person who signed or approved this event.
    * This is usually only relevant for the "Deliverd" event.
    */
-  signer?: string | PersonName;
+  signer?: string;
 
   /**
    * Human-readable information regarding this event, such as details about the error state
