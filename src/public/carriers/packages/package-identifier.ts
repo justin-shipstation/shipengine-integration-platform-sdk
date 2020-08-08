@@ -23,10 +23,10 @@ export interface PackageIdentifier {
   /**
    * The carrier tracking number
    */
-  readonly trackingNumber: string;
+  trackingNumber: string;
 
   /**
    * Your own identifiers for this package
    */
-  readonly identifiers: Identifiers;
+  identifiers: Identifiers;
 }

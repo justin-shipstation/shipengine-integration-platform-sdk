@@ -11,46 +11,46 @@ export interface NewPackage {
   /**
    * The packaging used
    */
-  readonly packaging: Packaging;
+  packaging: Packaging;
 
   /**
    * The package dimensions
    */
-  readonly dimensions?: Dimensions;
+  dimensions?: Dimensions;
 
   /**
    * The package weight
    */
-  readonly weight?: Weight;
+  weight?: Weight;
 
   /**
    * The insured value of this package
    */
-  readonly insuredValue: MonetaryValue;
+  insuredValue: MonetaryValue;
 
   /**
    * Indicates whether the package contains alcohol
    */
-  readonly containsAlcohol: boolean;
+  containsAlcohol: boolean;
 
   /**
    * Indicates whether the package cannot be processed automatically due to size, shape, weight, etc.
    * and requires manual handling.
    */
-  readonly isNonMachinable: boolean;
+  isNonMachinable: boolean;
 
   /**
    * Label preferences for this package
    */
-  readonly label: NewLabel;
+  label: NewLabel;
 
   /**
    * Customs declarations for this package
    */
-  readonly customs: Customs;
+  customs: Customs;
 
   /**
    * Describes the items inside the package
    */
-  readonly contents: readonly PackageItem[];
+  contents: PackageItem[];
 }

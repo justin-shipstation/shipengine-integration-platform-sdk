@@ -9,5 +9,5 @@ export interface QuantityPOJO {
  * The quantity of items in a package
  */
 export interface Quantity {
-  readonly value: number;
+  value: number;
 }

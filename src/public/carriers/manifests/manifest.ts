@@ -19,7 +19,7 @@ export interface Manifest {
   /**
    * The shipments that are included on this manifest.
    */
-  shipments: readonly ShipmentIdentifierPOJO[];
+  shipments: ShipmentIdentifierPOJO[];
 
   /**
    * The digital manifest document, such as a PDF SCAN form

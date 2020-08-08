@@ -29,15 +29,15 @@ export interface Charge {
   /**
    * The user-friendly name of the charge (e.g. "Fuel Charge", "Oversize Package Fee")
    */
-  readonly name: string;
+  name: string;
 
   /**
    * The type of charge
    */
-  readonly type: ChargeType;
+  type: ChargeType;
 
   /**
    * The amount of the charge (negative amount for a credit)
    */
-  readonly amount: MonetaryValue;
+  amount: MonetaryValue;
 }

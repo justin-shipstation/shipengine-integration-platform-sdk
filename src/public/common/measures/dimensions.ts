@@ -20,10 +20,10 @@ export interface DimensionsPOJO {
  * The dimensions of a package
  */
 export interface Dimensions {
-  readonly length: number;
-  readonly width: number;
-  readonly height: number;
-  readonly unit: LengthUnit;
+  length: number;
+  width: number;
+  height: number;
+  unit: LengthUnit;
 
   /**
    * Returns the dimensions in inches

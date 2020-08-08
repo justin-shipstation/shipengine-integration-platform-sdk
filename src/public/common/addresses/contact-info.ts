@@ -13,7 +13,7 @@ export interface ContactInfoPOJO {
  * A person's contact information
  */
 export interface ContactInfo {
-  readonly name: PersonName;
-  readonly email: string;
-  readonly phoneNumber: string;
+  name: PersonName;
+  email: string;
+  phoneNumber: string;
 }

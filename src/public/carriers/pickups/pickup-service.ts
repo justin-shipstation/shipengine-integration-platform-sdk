@@ -36,17 +36,17 @@ export interface PickupService extends PickupServiceIdentifier {
   /**
    * The user-friendly service name (e.g. "One-Time Pickup", "Recurring Pickup", "Drop-Off")
    */
-  readonly name: string;
+  name: string;
 
   /**
    * A short, user-friendly description of the service
    */
-  readonly description: string;
+  description: string;
 
   /**
    * Indicates whether the carrier provides a sandbox/development API for this pickup service.
    * A sandbox should mimic real functionality as much as possible but MUST NOT incur any actual
    * costs or affect production data.
    */
-  readonly hasSandbox: boolean;
+  hasSandbox: boolean;
 }

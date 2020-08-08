@@ -29,10 +29,10 @@ export interface ShipmentIdentifier {
    * For multi-piece shipments, this may be a separate tracking number, or the same
    * tracking number as one of the packages.
    */
-  readonly trackingNumber: string;
+  trackingNumber: string;
 
   /**
    * Your own identifiers for this shipment
    */
-  readonly identifiers: Identifiers;
+  identifiers: Identifiers;
 }

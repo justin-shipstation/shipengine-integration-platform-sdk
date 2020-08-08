@@ -10,55 +10,55 @@ export interface PickupCancellation {
   /**
    * The unique ID of this cancellation. This ID is used to correlate cancellations with outcomes.
    */
-  readonly cancellationID: UUID;
+  cancellationID: UUID;
 
   /**
    * The unique ID of the pickup to be cancelled
    */
-  readonly id: string;
+  id: string;
 
   /**
    * Your own identifiers for this pickup
    */
-  readonly identifiers: Identifiers;
+  identifiers: Identifiers;
 
   /**
    * The requested pickup service
    */
-  readonly pickupService: PickupService;
+  pickupService: PickupService;
 
   /**
    * The reason for the cancellation
    */
-  readonly reason: PickupCancellationReason;
+  reason: PickupCancellationReason;
 
   /**
    * Information about why the customer is cancelling the pickup
    */
-  readonly notes: readonly Note[];
+  notes: Note[];
 
   /**
    * The address where the pickup was requested
    */
-  readonly address: Address;
+  address: Address;
 
   /**
    * The contact information of the person who scheduled/cancelled the pickup
    */
-  readonly contact: ContactInfo;
+  contact: ContactInfo;
 
   /**
    * A list of dates and times when the carrier intended to pickup
    */
-  readonly timeWindows: readonly TimeRange[];
+  timeWindows: TimeRange[];
 
   /**
    * The shipments to be picked up
    */
-  readonly shipments: readonly PickupShipment[];
+  shipments: PickupShipment[];
 
   /**
    * Arbitrary data about this pickup that was previously persisted by the ShipEngine Platform.
    */
-  readonly metadata: object;
+  metadata: object;
 }

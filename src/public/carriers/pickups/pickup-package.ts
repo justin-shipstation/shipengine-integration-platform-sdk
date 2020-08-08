@@ -10,21 +10,21 @@ export interface PickupPackage extends PackageIdentifier {
   /**
    * The packaging used for this package
    */
-  readonly packaging: PackagingIdentifier;
+  packaging: PackagingIdentifier;
 
   /**
    * The package dimensions
    */
-  readonly dimensions?: Dimensions;
+  dimensions?: Dimensions;
 
   /**
    * The package weight
    */
-  readonly weight?: Weight;
+  weight?: Weight;
 
   /**
    * Arbitrary data about this package that will be persisted by the ShipEngine Integration Platform.
    * Must be JSON serializable.
    */
-  readonly metadata?: object;
+  metadata?: object;
 }

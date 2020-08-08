@@ -20,18 +20,18 @@ export interface WeightPOJO {
  * The weight of a package
  */
 export interface Weight {
-  readonly value: number;
-  readonly unit: WeightUnit;
+  value: number;
+  unit: WeightUnit;
 
   /**
    * The weight in ounces
    */
-  readonly ounces: number;
+  ounces: number;
 
   /**
    * The weight in grams
    */
-  readonly grams: number;
+  grams: number;
 
   /**
    * Returns the weight in ounces

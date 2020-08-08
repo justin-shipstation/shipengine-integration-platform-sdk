@@ -42,12 +42,12 @@ export interface DeliveryConfirmation extends DeliveryConfirmationIdentifier {
   /**
    * The user-friendly name for this delivery confirmation (e.g. "Adult Signature", "Authority to Leave")
    */
-  readonly name: string;
+  name: string;
 
   /**
    * A short, user-friendly description of the delivery confirmation type
    */
-  readonly description: string;
+  description: string;
 
   /**
    * The type of confirmation

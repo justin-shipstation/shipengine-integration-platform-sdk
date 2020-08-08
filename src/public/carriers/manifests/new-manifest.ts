@@ -11,17 +11,17 @@ export interface NewManifest {
    *
    * NOTE: This field is required if the carrier's `manifestLocations` setting is `single_location`.
    */
-  readonly shipFrom?: Address;
+  shipFrom?: Address;
 
   /**
    * The start-of-day time, or the `shipmentDateTime` of the earliest shipment being manifested.
    */
-  readonly openDateTime: DateTimeZone;
+  openDateTime: DateTimeZone;
 
   /**
    * The end-of-day time, or the `shipmentDateTime` of the latest shipment being manifested.
    */
-  readonly closeDateTime: DateTimeZone;
+  closeDateTime: DateTimeZone;
 
   /**
    * The meaning of this field varies depending on the carrier's `manifestShipments` setting.
@@ -33,5 +33,5 @@ export interface NewManifest {
    * `exclude_shipments`: This field specifies which shipments should _not_ be manifested.
    * All other shipments will be manifested.
    */
-  readonly shipments: readonly ShipmentIdentifier[];
+  shipments: ShipmentIdentifier[];
 }

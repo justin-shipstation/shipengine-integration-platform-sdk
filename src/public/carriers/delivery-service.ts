@@ -126,57 +126,57 @@ export interface DeliveryService extends DeliveryServiceIdentifier {
   /**
    * The user-friendly service name (e.g. "Priority Overnight", "2-Day Air")
    */
-  readonly name: string;
+  name: string;
 
   /**
    * A short, user-friendly description of the service
    */
-  readonly description: string;
+  description: string;
 
   /**
    * The class of implements Iof service
    */
-  readonly class: DeliveryServiceClass;
+  class: DeliveryServiceClass;
 
   /**
    * The grade of service
    */
-  readonly grade: DeliveryServiceGrade;
+  grade: DeliveryServiceGrade;
 
   /**
    * A well-known service that's used to fulfill this delivery service
    */
-  readonly fulfillmentService?: FulfillmentService;
+  fulfillmentService?: FulfillmentService;
 
   /**
    * The service area this service covers
    */
-  readonly serviceArea?: ServiceArea;
+  serviceArea?: ServiceArea;
 
   /**
    * Indicates whether this service is a consolidation of multiple carrier services
    */
-  readonly isConsolidationService: boolean;
+  isConsolidationService: boolean;
 
   /**
    * Indicates whether the service allows multiple packages in a single shipment
    */
-  readonly allowsMultiplePackages: boolean;
+  allowsMultiplePackages: boolean;
 
   /**
    * Indicates whether shippers can purchase insurance from the carrier for this service
    */
-  readonly isInsurable: boolean;
+  isInsurable: boolean;
 
   /**
    * Indicates whether tracking numbers are provided
    */
-  readonly isTrackable: boolean;
+  isTrackable: boolean;
 
   /**
    * Indicates is return shipments are supported
    */
-  readonly supportsReturns: boolean;
+  supportsReturns: boolean;
 
   /**
    * Indicates what type of manifests the carrier supports
@@ -188,53 +188,53 @@ export interface DeliveryService extends DeliveryServiceIdentifier {
    * A sandbox should mimic real functionality as much as possible but MUST NOT incur any actual
    * costs or affect production data.
    */
-  readonly hasSandbox: boolean;
+  hasSandbox: boolean;
 
   /**
    * The label formats that are offered for this service
    */
-  readonly labelFormats: readonly DocumentFormat[];
+  labelFormats: DocumentFormat[];
 
   /**
    * The label dimensions that are used for this service
    */
-  readonly labelSizes: readonly DocumentSize[];
+  labelSizes: DocumentSize[];
 
   /**
    * The countries that can be shipped from using this service
    */
-  readonly originCountries: readonly Country[];
+  originCountries: Country[];
 
   /**
    * The countries that can be shipped to using this service
    */
-  readonly destinationCountries: readonly Country[];
+  destinationCountries: Country[];
 
   /**
    * The types of packaging that are provided/allowed for this service
    */
-  readonly packaging: readonly Packaging[];
+  packaging: Packaging[];
 
   /**
    * The types of package delivery confirmations offered for this service
    */
-  readonly deliveryConfirmations: readonly DeliveryConfirmation[];
+  deliveryConfirmations: DeliveryConfirmation[];
 
   /**
    * All countries that this service ships to or from.
    * This list includes all unique origin and destination countries.
    */
-  readonly countries: readonly Country[];
+  countries: Country[];
 
   /**
    * Indicates whether the weight may be required when using this service.
    * This property is `true` if any of the service's packaging requires weight.
    */
-  readonly requiresWeight: boolean;
+  requiresWeight: boolean;
 
   /**
    * Indicates whether the dimensions may be required when using this service.
    * This property is `true` if any of the service's packaging requires dimensions.
    */
-  readonly requiresDimensions: boolean;
+  requiresDimensions: boolean;
 }

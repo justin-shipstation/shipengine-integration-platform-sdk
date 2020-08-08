@@ -10,33 +10,33 @@ export interface NewShipment {
   /**
    * The delivery service to use
    */
-  readonly deliveryService: DeliveryService;
+  deliveryService: DeliveryService;
 
   /**
    * The sender's contact info and address
    */
-  readonly shipFrom: AddressWithContactInfo;
+  shipFrom: AddressWithContactInfo;
 
   /**
    * The recipient's contact info and address
    */
-  readonly shipTo: AddressWithContactInfo;
+  shipTo: AddressWithContactInfo;
 
   /**
    * The return address
    */
-  readonly returnTo: AddressWithContactInfo;
+  returnTo: AddressWithContactInfo;
 
   /**
    * The date/time that the package is expected to ship.
    * This is not guaranteed to be in the future.
    */
-  readonly shipDateTime: DateTimeZone;
+  shipDateTime: DateTimeZone;
 
   /**
    * The total insured value of all packages in the shipment
    */
-  readonly totalInsuredValue: MonetaryValue;
+  totalInsuredValue: MonetaryValue;
 
   /**
    * Indicates whether the shipment cannot be processed automatically due to size, shape, weight, etc.
@@ -44,37 +44,37 @@ export interface NewShipment {
    *
    * This property is `true` if any package in the shipment is non-machinable.
    */
-  readonly isNonMachinable: boolean;
+  isNonMachinable: boolean;
 
   /**
    * Return shipment details
    */
-  readonly returns: {
+  returns: {
     /**
      * Indicates whether this is a return shipment
      */
-    readonly isReturn: boolean;
+    isReturn: boolean;
 
     /**
      * A return merchandise authorization (RMA) is an associated number assigned to process the return,
      * this number is often printed on the label, and used when the original shipper processes the inbound return.
      */
-    readonly rmaNumber: string;
+    rmaNumber: string;
   };
 
   /**
    * The list of packages in the shipment
    */
-  readonly packages: readonly NewPackage[];
+  packages: NewPackage[];
 
   /**
    * The requested delivery confirmation
    */
-  readonly deliveryConfirmation?: DeliveryConfirmation;
+  deliveryConfirmation?: DeliveryConfirmation;
 
   /**
    * Returns the first package in the `packages` array.
    * Useful for carriers that only support single-piece shipments.
    */
-  readonly package: NewPackage;
+  package: NewPackage;
 }

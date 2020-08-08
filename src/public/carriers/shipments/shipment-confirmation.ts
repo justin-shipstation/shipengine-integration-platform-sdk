@@ -28,11 +28,11 @@ export interface ShipmentConfirmation extends ShipmentIdentifierPOJO {
    * If the carrier does not provide a detailed breakdown, then just use a single
    * charge of type "shipping".
    */
-  charges: readonly ChargePOJO[];
+  charges: ChargePOJO[];
 
   /**
    * Confirmation details about each package in the shipment
    */
-  packages: readonly PackageConfirmation[];
+  packages: PackageConfirmation[];
 
 }

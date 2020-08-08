@@ -24,10 +24,10 @@ export interface SalesOrderIdentifier {
   /**
    * The marketplace's unique ID for the sales order
    */
-  readonly id: string;
+  id: string;
 
   /**
    * Your own identifiers for this sales order
    */
-  readonly identifiers: Identifiers;
+  identifiers: Identifiers;
 }

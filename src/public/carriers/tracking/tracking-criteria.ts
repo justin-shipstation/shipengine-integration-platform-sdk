@@ -7,15 +7,15 @@ export interface TrackingCriteria extends ShipmentIdentifier {
   /**
    * Return shipment details
    */
-  readonly returns: {
+  returns: {
     /**
      * Indicates whether this is a return shipment
      */
-    readonly isReturn: boolean;
+    isReturn: boolean;
   };
 
   /**
    * Arbitrary data about this shipment that was previously persisted by the ShipEngine Platform.
    */
-  readonly metadata: object;
+  metadata: object;
 }

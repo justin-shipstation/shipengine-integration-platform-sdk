@@ -29,15 +29,15 @@ export interface SalesOrderItemIdentifier {
   /**
    * The marketplace's unique ID for the sales order
    */
-  readonly id: string;
+  id: string;
 
   /**
    * The Stock Keeping Unit code for this item
    */
-  readonly sku: string;
+  sku: string;
 
   /**
    * Your own identifiers for this sales order
    */
-  readonly identifiers: Identifiers;
+  identifiers: Identifiers;
 }

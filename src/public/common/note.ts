@@ -23,10 +23,10 @@ export interface Note {
   /**
    * The type of note
    */
-  readonly type: NoteType;
+  type: NoteType;
 
   /**
    * The note text
    */
-  readonly text: string;
+  text: string;
 }

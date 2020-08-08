@@ -20,10 +20,10 @@ export interface MonetaryValue {
   /**
    * The amount of this value.
    */
-  readonly value: number;
+  value: number;
 
   /**
    * The currency that the value represents.
    */
-  readonly currency: string;
+  currency: string;
 }

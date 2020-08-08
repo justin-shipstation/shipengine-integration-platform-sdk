@@ -9,20 +9,20 @@ export interface SalesOrderPackageItem {
   /**
    * The sales order associated with this item
    */
-  readonly salesOrder: SalesOrderIdentifier;
+  salesOrder: SalesOrderIdentifier;
 
   /**
    * The sales order item associated with this item
    */
-  readonly salesOrderItem: SalesOrderItemIdentifier;
+  salesOrderItem: SalesOrderItemIdentifier;
 
   /**
    * The product associated with this item
    */
-  readonly product?: ProductIdentifier;
+  product?: ProductIdentifier;
 
   /**
    * The quantity of this item in the package
    */
-  readonly quantity: Quantity;
+  quantity: Quantity;
 }

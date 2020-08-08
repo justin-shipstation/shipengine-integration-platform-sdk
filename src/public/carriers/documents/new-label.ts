@@ -8,13 +8,13 @@ export interface NewLabel {
    * The preferred file format of the label.
    * The carrier should return the label in this format, if possible.
    */
-  readonly format: DocumentFormat;
+  format: DocumentFormat;
 
   /**
    * The preferred label size.
    * The carrier should return the label in this size, if possible.
    */
-  readonly size: DocumentSize;
+  size: DocumentSize;
 
   /**
    * Some carriers provide general-purpose fields on their labels for custom text.
@@ -31,5 +31,5 @@ export interface NewLabel {
    *       such as "RMA Number" or "Order ID". Those should be set using the correspond
    *       properties of the shipment.
    */
-  readonly referenceFields: readonly string[];
+  referenceFields: string[];
 }

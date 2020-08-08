@@ -47,20 +47,20 @@ export interface Packaging extends PackagingIdentifier {
   /**
    * The user-friendly name for this packaging (e.g. "Flat-Rate Box", "Large Padded Envelope")
    */
-  readonly name: string;
+  name: string;
 
   /**
    * A short, user-friendly description of the packaging
    */
-  readonly description: string;
+  description: string;
 
   /**
    * Indicates whether the weight must be specified when using this packaging
    */
-  readonly requiresWeight: boolean;
+  requiresWeight: boolean;
 
   /**
    * Indicates whether the dimensions must be specified when using this packaging
    */
-  readonly requiresDimensions: boolean;
+  requiresDimensions: boolean;
 }

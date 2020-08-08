@@ -23,12 +23,12 @@ export interface TimeRange {
   /**
    * The start date/time of the range
    */
-  readonly startDateTime: DateTimeZone;
+  startDateTime: DateTimeZone;
 
   /**
    * The end date/time of the range
    */
-  readonly endDateTime: DateTimeZone;
+  endDateTime: DateTimeZone;
 
   /**
    * Returns the time range as a string

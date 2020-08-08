@@ -10,30 +10,30 @@ export interface PickupRequest {
   /**
    * The requested pickup service
    */
-  readonly pickupService: PickupService;
+  pickupService: PickupService;
 
   /**
    * The requested window of time for the carrier to arrive.
    */
-  readonly timeWindow: TimeRange;
+  timeWindow: TimeRange;
 
   /**
    * The address where the packages should be picked up
    */
-  readonly address: Address;
+  address: Address;
 
   /**
    * Contact information about the person there to meet the driver
    */
-  readonly contact: ContactInfo;
+  contact: ContactInfo;
 
   /**
    * Additional information about the pickup
    */
-  readonly notes: readonly Note[];
+  notes: Note[];
 
   /**
    * The shipments to be picked up
    */
-  readonly shipments: readonly PickupShipment[];
+  shipments: PickupShipment[];
 }

@@ -21,5 +21,5 @@ export interface Customs {
    * product type (e.g. two t-shirts). In addition, some package contents don't need to be dclared
    * for customs purposes.
    */
-  contents?: readonly CustomsItem[];
+  contents?: CustomsItem[];
 }
