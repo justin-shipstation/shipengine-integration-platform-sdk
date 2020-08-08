@@ -27,7 +27,7 @@ export type CreateShipment = (transaction: Transaction, shipment: NewShipment)
  * this may include voiding labels, refunding charges, and/or removing the shipment from the day's manifest.
  */
 export type CancelShipments = (transaction: Transaction, shipments: ShipmentCancellation[])
-=> void | ShipmentCancellationOutcome[] | Promise<void | ShipmentCancellationOutcome[]>;
+=> ShipmentCancellationOutcome[] | Promise<ShipmentCancellationOutcome[]>;
 
 
 /**
@@ -62,4 +62,4 @@ export type SchedulePickup = (transaction: Transaction, pickup: PickupRequest)
  * Cancels one or more previously-requested package pickups
  */
 export type CancelPickups = (transaction: Transaction, pickups: PickupCancellation[])
-=> void | PickupCancellationOutcome[] | Promise<PickupCancellationOutcome[] | void>;
+=> PickupCancellationOutcome[] | Promise<PickupCancellationOutcome[]>;
