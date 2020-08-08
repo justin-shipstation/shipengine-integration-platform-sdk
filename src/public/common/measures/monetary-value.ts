@@ -1,7 +1,7 @@
 /**
  * A monetary value
  */
-export interface MonetaryValuePOJO {
+export interface MonetaryValue {
   /**
    * The amount of this value.
    */

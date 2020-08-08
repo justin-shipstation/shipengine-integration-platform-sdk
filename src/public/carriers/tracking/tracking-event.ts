@@ -1,4 +1,4 @@
-import type { AddressPOJO, DateTimeZonePOJO, NotePOJO, PersonNamePOJO } from "../../common";
+import type { Address, DateTimeZone, Note, PersonName } from "../../common";
 import type { ShipmentStatus } from "../enums";
 
 /**
@@ -14,7 +14,7 @@ export interface TrackingEvent {
   /**
    * The date/time that this event occurred
    */
-  dateTime: DateTimeZonePOJO | Date | string;
+  dateTime: DateTimeZone | Date | string;
 
   /**
    * The shipment status at the time of this event
@@ -40,17 +40,17 @@ export interface TrackingEvent {
   /**
    * The address (or as much of it as is known) where the event occurred
    */
-  address?: Partial<AddressPOJO>;
+  address?: Partial<Address>;
 
   /**
    * The name of the person who signed or approved this event.
    * This is usually only relevant for the "Deliverd" event.
    */
-  signer?: string | PersonNamePOJO;
+  signer?: string | PersonName;
 
   /**
    * Human-readable information regarding this event, such as details about the error state
    * or a description of where the package was placed upon delivery.
    */
-  notes?: NotePOJO[];
+  notes?: Note[];
 }

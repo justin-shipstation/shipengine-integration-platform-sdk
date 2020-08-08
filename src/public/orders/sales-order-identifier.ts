@@ -4,7 +4,7 @@ import type { Identifiers } from "../common";
 /**
  * Identifies a sales order
  */
-export interface SalesOrderIdentifierPOJO {
+export interface SalesOrderIdentifier {
   /**
    * The marketplace's unique ID for the sales order
    */

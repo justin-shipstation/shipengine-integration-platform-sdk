@@ -37,7 +37,7 @@ export type PackagingIdentifier = DefinitionIdentifier;
 /**
  * Identifies a type of packaging
  */
-export type PackagingIdentifierPOJO = Definition;
+export type PackagingIdentifier = Definition;
 
 
 /**

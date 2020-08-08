@@ -1,7 +1,7 @@
 /**
  * Custom identifiers for a resource
  */
-export interface IdentifiersPOJO {
+export interface Identifiers {
   [key: string]: string | undefined;
 }
 

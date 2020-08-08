@@ -1,7 +1,7 @@
 /**
  * The quantity of items in a package
  */
-export interface QuantityPOJO {
+export interface Quantity {
   value: number;
 }
 

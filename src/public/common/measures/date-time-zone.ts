@@ -1,7 +1,7 @@
 /**
  * A date/time in a specific time zone
  */
-export interface DateTimeZonePOJO {
+export interface DateTimeZone {
   /**
    * The date and time, without a time zone (e.g. "2005-09-23T17:30:00")
    */
@@ -62,7 +62,7 @@ export interface DateTimeZone {
   /**
    * Returns the carrier as an object that can be safely serialized as JSON.
    */
-  toJSON(): DateTimeZonePOJO;
+  toJSON(): DateTimeZone;
 
   /**
    * Returns the number of milliseconds since the Unix Epoch, in UTC

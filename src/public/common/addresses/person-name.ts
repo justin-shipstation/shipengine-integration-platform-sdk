@@ -1,7 +1,7 @@
 /**
  * A person's complete name
  */
-export interface PersonNamePOJO {
+export interface PersonName {
   title?: string;
   given: string;
   middle?: string;

@@ -32,7 +32,7 @@ export type DeliveryConfirmationIdentifier = DefinitionIdentifier;
 /**
  * Identifies a delivery confirmation option offered by a carrier
  */
-export type DeliveryConfirmationIdentifierPOJO = Definition;
+export type DeliveryConfirmationIdentifier = Definition;
 
 
 /**

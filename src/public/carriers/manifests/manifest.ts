@@ -1,6 +1,6 @@
-import type { Identifiers, NotePOJO } from "../../common";
+import type { Identifiers, Note } from "../../common";
 import type { Document } from "../documents/document";
-import type { ShipmentIdentifierPOJO } from "../shipments/shipment-identifier";
+import type { ShipmentIdentifier } from "../shipments/shipment-identifier";
 
 /**
  * An end-of-day manifest
@@ -19,7 +19,7 @@ export interface Manifest {
   /**
    * The shipments that are included on this manifest.
    */
-  shipments: ShipmentIdentifierPOJO[];
+  shipments: ShipmentIdentifier[];
 
   /**
    * The digital manifest document, such as a PDF SCAN form
@@ -29,7 +29,7 @@ export interface Manifest {
   /**
    * Human-readable information about the manifest
    */
-  notes?: NotePOJO[];
+  notes?: Note[];
 
   /**
    * Arbitrary data about this manifest that will be persisted by the ShipEngine Integration Platform.

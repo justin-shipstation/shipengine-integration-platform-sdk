@@ -3,7 +3,7 @@ import type { Identifiers } from "../../common";
 /**
  * Identifies a shipment
  */
-export interface ShipmentIdentifierPOJO {
+export interface ShipmentIdentifier {
   /**
    * The master tracking number for the entire shipment.
    * For single-piece shipments, this will be the same as the package tracking number.

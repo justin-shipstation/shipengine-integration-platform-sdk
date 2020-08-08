@@ -1,4 +1,4 @@
-import type { CancellationStatus, NotePOJO, UUID } from "../../common";
+import type { CancellationStatus, Note, UUID } from "../../common";
 
 /**
  * The outcome of a shipment cancellation
@@ -34,7 +34,7 @@ export interface ShipmentCancellationOutcome {
    * Human-readable information/instructions regarding the cancellation
    * (e.g. "Please call ###-#### to cancel", "Cannot cancel because driver is en-route")
    */
-  notes?: NotePOJO[];
+  notes?: Note[];
 
   /**
    * Arbitrary data about this shipment that will be persisted by the ShipEngine Integration Platform.

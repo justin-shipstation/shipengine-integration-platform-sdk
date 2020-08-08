@@ -1,18 +1,18 @@
-import type { AddressWithContactInfoPOJO, ChargePOJO, DateTimeZonePOJO, NotePOJO, URLString } from "../common";
+import type { AddressWithContactInfo, Charge, DateTimeZone, Note, URLString } from "../common";
 import type { Buyer } from "./buyer";
 import type { PaymentMethod, SalesOrderStatus } from "./enums";
-import type { SalesOrderIdentifierPOJO } from "./sales-order-identifier";
+import type { SalesOrderIdentifier } from "./sales-order-identifier";
 import type { SalesOrderItem } from "./sales-order-item";
 import type { ShippingPreferences } from "./shipping-preferences";
 
 /**
  * A sales order
  */
-export interface SalesOrder extends SalesOrderIdentifierPOJO {
+export interface SalesOrder extends SalesOrderIdentifier {
   /**
    * The date/time that the sales order was originally placed
    */
-  createdDateTime: DateTimeZonePOJO | Date | string;
+  createdDateTime: DateTimeZone | Date | string;
 
   /**
    * The current status
@@ -32,7 +32,7 @@ export interface SalesOrder extends SalesOrderIdentifierPOJO {
   /**
    * The address where the order should be shipped
    */
-  shipTo: AddressWithContactInfoPOJO;
+  shipTo: AddressWithContactInfo;
 
   /**
    * The buyer who bought the order. This is not necessarily the same person as the `shipTo`
@@ -47,7 +47,7 @@ export interface SalesOrder extends SalesOrderIdentifierPOJO {
   /**
    * The breakdown of charges for this sales order
    */
-  charges?: ChargePOJO[];
+  charges?: Charge[];
 
   /**
    * The items in this sales order
@@ -57,7 +57,7 @@ export interface SalesOrder extends SalesOrderIdentifierPOJO {
   /**
    * Human-readable information regarding this sales order, such as gift notes, backorder notices, etc.
    */
-  notes?: NotePOJO[];
+  notes?: Note[];
 
   /**
    * Arbitrary data about this sales order that will be persisted by the ShipEngine Integration Platform.

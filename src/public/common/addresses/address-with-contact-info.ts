@@ -1,10 +1,10 @@
-import type { Address, AddressPOJO } from "./address";
-import type { ContactInfo, ContactInfoPOJO } from "./contact-info";
+import type { Address, Address } from "./address";
+import type { ContactInfo, ContactInfo } from "./contact-info";
 
 /**
  * A mailing address with a person's contact info
  */
-export interface AddressWithContactInfoPOJO extends AddressPOJO, ContactInfoPOJO {}
+export interface AddressWithContactInfo extends Address, ContactInfo {}
 
 
 /**

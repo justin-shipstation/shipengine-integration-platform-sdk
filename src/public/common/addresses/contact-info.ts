@@ -1,10 +1,10 @@
-import type { PersonName, PersonNamePOJO } from "./person-name";
+import type { PersonName, PersonName } from "./person-name";
 
 /**
  * A person's contact information
  */
-export interface ContactInfoPOJO {
-  name: string | PersonNamePOJO;
+export interface ContactInfo {
+  name: string | PersonName;
   email?: string;
   phoneNumber?: string;
 }

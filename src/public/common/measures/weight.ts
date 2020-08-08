@@ -11,7 +11,7 @@ export enum WeightUnit {
 /**
  * The weight of a package
  */
-export interface WeightPOJO {
+export interface Weight {
   value: number;
   unit: WeightUnit;
 }

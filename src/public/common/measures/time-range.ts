@@ -1,18 +1,18 @@
-import type { DateTimeZone, DateTimeZonePOJO } from "./date-time-zone";
+import type { DateTimeZone, DateTimeZone } from "./date-time-zone";
 
 /**
  * A range of time
  */
-export interface TimeRangePOJO {
+export interface TimeRange {
   /**
    * The start date/time of the range
    */
-  startDateTime: DateTimeZonePOJO | Date | string;
+  startDateTime: DateTimeZone | Date | string;
 
   /**
    * The end date/time of the range
    */
-  endDateTime: DateTimeZonePOJO | Date | string;
+  endDateTime: DateTimeZone | Date | string;
 }
 
 

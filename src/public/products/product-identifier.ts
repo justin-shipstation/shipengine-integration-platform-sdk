@@ -3,7 +3,7 @@ import type { Identifiers } from "../common";
 /**
  * Identifies a product
  */
-export interface ProductIdentifierPOJO {
+export interface ProductIdentifier {
   /**
    * The product catalog's unique ID for the order
    */

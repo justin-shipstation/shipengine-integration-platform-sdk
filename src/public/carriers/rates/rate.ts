@@ -1,6 +1,6 @@
-import type { ChargePOJO, DateTimeZonePOJO, NotePOJO } from "../../common";
+import type { Charge, DateTimeZone, Note } from "../../common";
 import type { RatePackage } from "./rate-package";
-import type { DeliveryConfirmationIdentifierPOJO } from "../delivery-confirmation";
+import type { DeliveryConfirmationIdentifier } from "../delivery-confirmation";
 
 /**
  * A quoted shipping rate based on the specified rate criteria
@@ -15,12 +15,12 @@ export interface Rate {
    * The date/time that the package is expected to ship.
    * This is not guaranteed to be in the future.
    */
-  shipDateTime?: DateTimeZonePOJO | Date | string;
+  shipDateTime?: DateTimeZone | Date | string;
 
   /**
    * The estimated date and time the shipment will be delivered
    */
-  deliveryDateTime?: DateTimeZonePOJO | Date | string;
+  deliveryDateTime?: DateTimeZone | Date | string;
 
   /**
    * Indicates whether this rate is based on pre-negotiated terms
@@ -37,12 +37,12 @@ export interface Rate {
    * If the carrier does not provide a detailed breakdown, then just use a single
    * charge of type "shipping".
    */
-  charges: ChargePOJO[];
+  charges: Charge[];
 
   /**
    * Human-readable information regarding this rate quote, such as limitations or restrictions
    */
-  notes?: NotePOJO[];
+  notes?: Note[];
 
   /**
    * Package in the shipment
@@ -52,5 +52,5 @@ export interface Rate {
   /**
    * The delivery confirmation included in this rate
    */
-  deliveryConfirmation?: DeliveryConfirmationIdentifierPOJO | string;
+  deliveryConfirmation?: DeliveryConfirmationIdentifier | string;
 }

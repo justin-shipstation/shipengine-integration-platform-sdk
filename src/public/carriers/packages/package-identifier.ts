@@ -3,7 +3,7 @@ import type { Identifiers } from "../../common";
 /**
  * Identifies a package
  */
-export interface PackageIdentifierPOJO {
+export interface PackageIdentifier {
   /**
    * The carrier tracking number
    */

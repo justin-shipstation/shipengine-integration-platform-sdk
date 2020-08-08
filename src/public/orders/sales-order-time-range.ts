@@ -24,7 +24,7 @@ export interface SalesOrderPaging {
 }
 
 
-export interface SalesOrderPagingPOJO {
+export interface SalesOrderPaging {
   /** The number of items per page */
   pageSize?: number;
 

@@ -3,7 +3,7 @@ import type { Country } from "../country";
 /**
  * A mailing address
  */
-export interface AddressPOJO {
+export interface Address {
   company?: string;
   addressLines: string[];
   cityLocality: string;

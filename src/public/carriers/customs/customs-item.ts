@@ -1,4 +1,4 @@
-import type { Country, MonetaryValuePOJO, QuantityPOJO } from "../../common";
+import type { Country, MonetaryValue, Quantity } from "../../common";
 import type { CustomsItemType } from "../enums";
 
 /**
@@ -23,12 +23,12 @@ export interface CustomsItem {
   /**
    * The quantity of this item in the package
    */
-  quantity: QuantityPOJO;
+  quantity: Quantity;
 
   /**
    * The monetary value of each item
    */
-  unitValue: MonetaryValuePOJO;
+  unitValue: MonetaryValue;
 
   /**
    * The country of origin. This is usually the same as `countryOfManufacture`,

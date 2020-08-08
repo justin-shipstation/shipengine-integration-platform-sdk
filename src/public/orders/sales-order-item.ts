@@ -1,11 +1,11 @@
-import type { MonetaryValuePOJO, NotePOJO, QuantityPOJO, URLString, WeightPOJO } from "../common";
-import type { ProductIdentifierPOJO } from "../products";
-import type { SalesOrderItemIdentifierPOJO } from "./sales-order-item-identifier";
+import type { MonetaryValue, Note, Quantity, URLString, Weight } from "../common";
+import type { ProductIdentifier } from "../products";
+import type { SalesOrderItemIdentifier } from "./sales-order-item-identifier";
 
 /**
  * An item in a sales order
  */
-export interface SalesOrderItem extends SalesOrderItemIdentifierPOJO {
+export interface SalesOrderItem extends SalesOrderItemIdentifier {
   /**
    * The user-friendly name of the item. This is often the same as the product name.
    */
@@ -19,23 +19,23 @@ export interface SalesOrderItem extends SalesOrderItemIdentifierPOJO {
   /**
    * The product associated with this item
    */
-  product: ProductIdentifierPOJO;
+  product: ProductIdentifier;
 
   /**
    * The quantity of this item in the sales order
    */
-  quantity: QuantityPOJO;
+  quantity: Quantity;
 
   /**
    * The sale price of each item. This should NOT include additional charges or adjustments,
    * such as taxes or discounts. Use `charges` for those.
    */
-  unitPrice: MonetaryValuePOJO;
+  unitPrice: MonetaryValue;
 
   /**
    * The weight of each item
    */
-  unitWeight?: WeightPOJO;
+  unitWeight?: Weight;
 
   /**
    * The URL of a webpage where the customer can view the order item
@@ -50,7 +50,7 @@ export interface SalesOrderItem extends SalesOrderItemIdentifierPOJO {
   /**
    * Human-readable information regarding this order item, such as gift notes, backorder notices, etc.
    */
-  notes?: NotePOJO[];
+  notes?: Note[];
 
   /**
    * Arbitrary data about this order item that will be persisted by the ShipEngine Integration Platform.

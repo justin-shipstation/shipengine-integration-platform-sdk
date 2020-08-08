@@ -1,4 +1,4 @@
-import type { DeliveryConfirmationType, MonetaryValuePOJO } from "../common";
+import type { DeliveryConfirmationType, MonetaryValue } from "../common";
 
 
 /**
@@ -23,5 +23,5 @@ export interface ShippingPreferences {
   /**
    * Requests that the shipment be insured for the specified value
    */
-  insuredValue?: MonetaryValuePOJO;
+  insuredValue?: MonetaryValue;
 }
