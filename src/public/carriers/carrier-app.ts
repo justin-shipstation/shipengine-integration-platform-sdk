@@ -1,4 +1,4 @@
-import type { ConnectionAppDefinition, InlineOrReference, InlineOrReferenceArray } from "../common";
+import type { ConnectionAppDefinition } from "../common";
 import type { DeliveryServiceDefinition } from "./delivery-service";
 import type { ManifestLocation, ManifestShipment, ManifestType } from "./enums";
 import type { CancelPickups, CancelShipments, CreateManifest, CreateShipment, RateShipment, SchedulePickup, TrackShipment } from "./methods";
@@ -34,12 +34,12 @@ export interface CarrierAppDefinition extends ConnectionAppDefinition {
   /**
    * The delivery services that are offered by the carrier
    */
-  deliveryServices: InlineOrReferenceArray<DeliveryServiceDefinition>;
+  deliveryServices: DeliveryServiceDefinition[];
 
   /**
    * The package pickup services that are offered by the carrier
    */
-  pickupServices?: InlineOrReferenceArray<PickupServiceDefinition>;
+  pickupServices?: PickupServiceDefinition[];
 
   /**
    * Creates a new shipment, including its labels, tracking numbers, customs forms, etc.

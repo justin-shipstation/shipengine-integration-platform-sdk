@@ -1,4 +1,4 @@
-import type { ConnectionAppDefinition, InlineOrReference } from "../common";
+import type { ConnectionAppDefinition } from "../common";
 import type { GetSalesOrdersByDate, ShipmentCancelled, ShipmentCreated } from "./methods";
 
 

@@ -25,21 +25,3 @@ export interface EcmaScriptModule<T = unknown> {
   default: T;
   [key: string]: unknown;
 }
-
-/**
- * A single value that can be provided multiple different ways:
- *
- * - directly inline
- * - referenced via an external JSON/YAML file
- * - dynamically imported via `require()` or `import()`
- */
-export type T> = T | FilePath | DynamicImport<T;
-
-/**
- * An array of values. The array itself, and/or each item in the array can be specified multiple ways:
- *
- * - directly inline
- * - referenced via an external JSON/YAML file
- * - dynamically imported via `require()` or `import()`
- */
-export type InlineOrReferenceArray<T> = ReadonlyArray<T>> | FilePath | DynamicImport<ReadonlyArray<InlineOrReference<T>>;

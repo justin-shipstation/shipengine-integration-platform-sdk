@@ -1,4 +1,4 @@
-import type { Country, Definition, DefinitionIdentifier, InlineOrReference, InlineOrReferenceArray } from "../common";
+import type { Country, Definition, DefinitionIdentifier } from "../common";
 import type { DeliveryConfirmation, DeliveryConfirmationDefinition } from "./delivery-confirmation";
 import type { DeliveryServiceClass, DeliveryServiceGrade, DocumentFormat, DocumentSize, ManifestType, ServiceArea } from "./enums";
 import type { FulfillmentService } from "./fulfillment-service";
@@ -99,12 +99,12 @@ export interface DeliveryServiceDefinition extends Definition {
   /**
    * The types of packaging that are provided/allowed for this service
    */
-  packaging: InlineOrReferenceArray<PackagingDefinition>;
+  packaging: PackagingDefinition;
 
   /**
    * The types of package delivery confirmations offered for this service
    */
-  deliveryConfirmations?: InlineOrReferenceArray<DeliveryConfirmationDefinition>;
+  deliveryConfirmations?: DeliveryConfirmationDefinition;
 }
 
 

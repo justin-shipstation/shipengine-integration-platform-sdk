@@ -1,7 +1,7 @@
 import type { AppDefinition } from "./app";
 import type { FormDefinition } from "./form";
 import type { Connect } from "./methods";
-import type { FilePath, InlineOrReference, URLString } from "./types";
+import type { FilePath, URLString } from "./types";
 
 
 /**
