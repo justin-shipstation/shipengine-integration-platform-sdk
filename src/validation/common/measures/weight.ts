@@ -1,45 +1,7 @@
-/**
- * A weight measurement unit
- */
-export enum WeightUnit {
-  Grams = "g",
-  Ounces = "oz",
-  Kilograms = "kg",
-  Pounds = "lb"
-}
+import { WeightUnit } from "../../../public";
+import Joi = require("@hapi/joi");
 
-/**
- * The weight of a package
- */
-export interface Weight {
-  value: number;
-  unit: WeightUnit;
-}
-
-/**
- * The weight of a package
- */
-export interface Weight {
-  value: number;
-  unit: WeightUnit;
-
-  /**
-   * The weight in ounces
-   */
-  ounces: number;
-
-  /**
-   * The weight in grams
-   */
-  grams: number;
-
-  /**
-   * Returns the weight in ounces
-   */
-  toOunces(): Weight;
-
-  /**
-   * Returns the weight in grams
-   */
-  toGrams(): Weight;
-}
+export const WeightSchema = Joi.object({
+  value: Joi.number().required(),
+  unit: Joi.string().valid(WeightUnit)
+})

@@ -1,13 +1,5 @@
-/**
- * The quantity of items in a package
- */
-export interface Quantity {
-  value: number;
-}
+import Joi = require("@hapi/joi");
 
-/**
- * The quantity of items in a package
- */
-export interface Quantity {
-  value: number;
-}
+export const QuantitySchema = Joi.object({
+  value: Joi.number().required()
+});

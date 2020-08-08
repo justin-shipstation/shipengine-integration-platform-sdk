@@ -1,29 +1,6 @@
-/**
- * A monetary value
- */
-export interface MonetaryValue {
-  /**
-   * The amount of this value.
-   */
-  value: number;
+import Joi = require("@hapi/joi");
 
-  /**
-   * The currency that the value represents.
-   */
-  currency: string;
-}
-
-/**
- * A monetary value
- */
-export interface MonetaryValue {
-  /**
-   * The amount of this value.
-   */
-  value: number;
-
-  /**
-   * The currency that the value represents.
-   */
-  currency: string;
-}
+export const MonetaryValueSchema = Joi.object({
+  value: Joi.number().required(),
+  currency: Joi.number().required()
+});

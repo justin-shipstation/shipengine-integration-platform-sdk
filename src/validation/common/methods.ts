@@ -1,7 +1,6 @@
-import type { Transaction } from "./transaction";
+import Joi = require("@hapi/joi");
 
-/**
- * Connects to an existing account using the data that was gathered in the `connectionForm`.
- * NOTE: This function does not return a value. It updates the `transaction.session` property.
- */
-export type Connect = (transaction: Transaction, connectionFormData: object) => void | Promise<void>;
+export const ConnectSchema = Joi.function()
+  .required()
+  .arity(2)
+  .message('The connect method is required and must contain the transaction and connection form data parameters.');

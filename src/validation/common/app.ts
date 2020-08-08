@@ -1,26 +1,23 @@
-import type { UUID } from "./types";
+import { UUIDSchema } from "./types";
+import Joi = require("@hapi/joi");
+
 
 
 /**
  * A ShipEngine Integration Platform app
  */
-export interface AppDefinition {
-  /**
-   * A UUID that uniquely identifies the carrier.
-   * This ID should never change.
-   */
-  id: UUID;
-}
+export const AppSchema = Joi.object({
+  id: UUIDSchema
+});
 
 
 /**
  * A ShipEngine Integration Platform app manifest (package.json file)
  */
-export interface AppManifest {
-  name: string;
-  version: string;
-  description: string;
-  dependencies: Record<string, string>;
-  devDependencies: Record<string, string>;
-  [key: string]: unknown;
-}
+export const AppManifestSchema = Joi.object({
+  name: Joi.string().required(),
+  version: Joi.string().required(),
+  description: Joi.string().required(),
+  dependencies: Joi.object().pattern(/.*/, [Joi.string()]),
+  devDependencies: Joi.object().pattern(/.*/, [Joi.string()])
+});

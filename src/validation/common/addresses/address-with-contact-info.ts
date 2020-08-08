@@ -1,7 +1,4 @@
-import type { Address } from "./address";
-import type { ContactInfo } from "./contact-info";
+import { AddressSchema } from "./address";
+import { ContactInfoSchema } from "./contact-info";
 
-/**
- * A mailing address with a person's contact info
- */
-export interface AddressWithContactInfo extends Address, ContactInfo {}
+export const AddressWithContactInfoSchema = AddressSchema.concat(ContactInfoSchema);

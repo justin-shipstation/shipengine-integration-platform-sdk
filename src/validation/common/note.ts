@@ -1,32 +1,7 @@
-import type { NoteType } from "./enums";
+import { NoteTypeSchema } from "./enums";
+import Joi = require("@hapi/joi");
 
-/**
- * A note associated with a resource or result
- */
-export interface Note {
-  /**
-   * The type of note
-   */
-  type: NoteType;
-
-  /**
-   * The note text
-   */
-  text: string;
-}
-
-
-/**
- * A note associated with a resource or result
- */
-export interface Note {
-  /**
-   * The type of note
-   */
-  type: NoteType;
-
-  /**
-   * The note text
-   */
-  text: string;
-}
+export const NoteSchema = Joi.object({
+  type: NoteTypeSchema,
+  test: Joi.string().required()
+})

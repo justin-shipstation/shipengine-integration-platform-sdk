@@ -1,16 +1,7 @@
-import type { DateTimeZone } from "./date-time-zone";
+import { DateTimeZoneSchema } from "./date-time-zone";
+import Joi = require("@hapi/joi");
 
-/**
- * A range of time
- */
-export interface TimeRange {
-  /**
-   * The start date/time of the range
-   */
-  startDateTime: DateTimeZone | Date | string;
-
-  /**
-   * The end date/time of the range
-   */
-  endDateTime: DateTimeZone | Date | string;
-}
+export const TimeRangeSchema = Joi.object({
+  startDateTime: DateTimeZoneSchema,
+  endDateTime: DateTimeZoneSchema
+});

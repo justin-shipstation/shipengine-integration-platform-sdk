@@ -1,6 +1,3 @@
-/**
- * Custom identifiers for a resource
- */
-export interface Identifiers {
-  [key: string]: string | undefined;
-}
+import Joi = require("@hapi/joi");
+
+export const IdentifiersSchema  = Joi.object().pattern(/.*/, [Joi.string()]);

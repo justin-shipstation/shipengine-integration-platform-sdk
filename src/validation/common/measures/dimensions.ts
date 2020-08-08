@@ -1,37 +1,9 @@
-/**
- * A length measurement unit
- */
-export enum LengthUnit {
-  Inches = "in",
-  Centimeters = "cm"
-}
+import { LengthUnit } from "../../../public";
+import Joi = require("@hapi/joi");
 
-/**
- * The dimensions of a package
- */
-export interface Dimensions {
-  length: number;
-  width: number;
-  height: number;
-  unit: LengthUnit;
-}
-
-/**
- * The dimensions of a package
- */
-export interface Dimensions {
-  length: number;
-  width: number;
-  height: number;
-  unit: LengthUnit;
-
-  /**
-   * Returns the dimensions in inches
-   */
-  toInches(): Dimensions;
-
-  /**
-   * Returns the dimensions in centimeters
-   */
-  toCentimeters(): Dimensions;
-}
+export const DimensionsSchema = Joi.object({
+  length: Joi.number().required(),
+  width: Joi.number().required(),
+  height: Joi.number().required(),
+  unit: Joi.string().required().allow(LengthUnit)
+});

@@ -1,8 +1,7 @@
-/**
- * A person's contact information
- */
-export interface ContactInfo {
-  name: string;
-  email?: string;
-  phoneNumber?: string;
-}
+import Joi = require("@hapi/joi");
+
+export const ContactInfoSchema = Joi.object({
+  name: Joi.string().required(),
+  email: Joi.string().optional(),
+  phoneNumber: Joi.string().optional()
+});

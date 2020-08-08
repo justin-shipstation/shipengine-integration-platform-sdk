@@ -1,52 +1,17 @@
 import type { AppDefinition } from "./app";
-import type { FormDefinition } from "./form";
-import type { Connect } from "./methods";
-import type { FilePath, URLString } from "./types";
+import { FormDefinitionSchema} from "./form";
+import { ConnectSchema } from "./methods";
+import { URLStringSchema } from "./types";
+import Joi = require("@hapi/joi");
 
 
-/**
- * A ShipEngine Integration Platform app that connects to a service, such as a carrier or marketplace
- */
-export interface ConnectionAppDefinition extends AppDefinition {
-  /**
-   * The user-friendly connection name (e.g. "FedEx", "Shopify")
-   */
-  name: string;
-
-  /**
-   * A short, user-friendly description of the connection
-   */
-  description?: string;
-
-  /**
-   * The URL of the service's website
-   */
-  websiteURL: URLString;
-
-  /**
-   * The third party service's logo image
-   */
-  logo: FilePath;
-
-  /**
-   * The third party service's icon image
-   */
-  icon: FilePath;
-
-  /**
-   * A form that allows the user to connect to the service.
-   * This form will usually prompt for an account number and login credentials.
-   */
-  connectionForm: FormDefinition;
-
-  /**
-   * A form that allows the user to configure connection settings
-   */
-  settingsForm?: FormDefinition;
-
-  /**
-   * Connects to an existing account using the data that was gathered in the `connectionForm`.
-   * NOTE: This function does not return a value. It updates the `transaction.session` property.
-   */
-  connect?: Connect;
-}
+export const ConnectionAppSchema = Joi.object({
+  name: Joi.string().required(),
+  description: Joi.string().optional(),
+  websiteURL: URLStringSchema,
+  logo: Joi.string().required(),
+  icon: Joi.string().required(),
+  connectionForm: FormDefinitionSchema,
+  settingsForm: FormDefinitionSchema,
+  connect: ConnectSchema
+});
