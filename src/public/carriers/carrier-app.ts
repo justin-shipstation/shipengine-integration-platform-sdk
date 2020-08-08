@@ -44,36 +44,36 @@ export interface CarrierAppDefinition extends ConnectionAppDefinition {
   /**
    * Creates a new shipment, including its labels, tracking numbers, customs forms, etc.
    */
-  createShipment?: InlineOrReference<CreateShipment>;
+  createShipment?: CreateShipment;
 
   /**
    * Cancels one or more shipments that were previously created. Depending on the carrier,
    * this may include voiding labels, refunding charges, and/or removing the shipment from the day's manifest.
    */
-  cancelShipments?: InlineOrReference<CancelShipments>;
+  cancelShipments?: CancelShipments;
 
   /**
    * Calculates the shipping costs for a shipment, or multiple permutations of a shipment
    */
-  rateShipment?: InlineOrReference<RateShipment>;
+  rateShipment?: RateShipment;
 
   /**
    * Returns tracking details for a shipment
    */
-  trackShipment?: InlineOrReference<TrackShipment>;
+  trackShipment?: TrackShipment;
 
   /**
    * Creates an end-of-day manifest
    */
-  createManifest?: InlineOrReference<CreateManifest>;
+  createManifest?: CreateManifest;
 
   /**
    * Schedules a package pickup at a time and place
    */
-  schedulePickup?: InlineOrReference<SchedulePickup>;
+  schedulePickup?: SchedulePickup;
 
   /**
    * Cancels one or more previously-requested package pickups
    */
-  cancelPickups?: InlineOrReference<CancelPickups>;
+  cancelPickups?: CancelPickups;
 }

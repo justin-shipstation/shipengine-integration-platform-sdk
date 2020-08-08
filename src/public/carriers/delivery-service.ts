@@ -89,12 +89,12 @@ export interface DeliveryServiceDefinition extends Definition {
   /**
    * The countries that can be shipped from using this service
    */
-  originCountries: InlineOrReference<Country[]>;
+  originCountries: Country[];
 
   /**
    * The countries that can be shipped to using this service
    */
-  destinationCountries: InlineOrReference<Country[]>;
+  destinationCountries: Country[];
 
   /**
    * The types of packaging that are provided/allowed for this service

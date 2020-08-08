@@ -9,7 +9,7 @@ export interface OrderAppDefinition extends ConnectionAppDefinition {
   /**
    * Returns all orders that were created and/or modified within a given timeframe
    */
-  getSalesOrdersByDate?: InlineOrReference<GetSalesOrdersByDate>;
+  getSalesOrdersByDate?: GetSalesOrdersByDate;
 
   /**
    * Called when a shipment is created for one or more items in one or more sales orders.
@@ -17,7 +17,7 @@ export interface OrderAppDefinition extends ConnectionAppDefinition {
    * A single shipment may contain items from multiple sales orders, and a single sales order
    * may be fulfilled by multiple shipments.
    */
-  shipmentCreated?: InlineOrReference<ShipmentCreated>;
+  shipmentCreated?: ShipmentCreated;
 
   /**
    * Called when a shipment is cancelled for one or more items in one or more sales orders.
@@ -25,7 +25,7 @@ export interface OrderAppDefinition extends ConnectionAppDefinition {
    * A single shipment may contain items from multiple sales orders, and a single sales order
    * may be fulfilled by multiple shipments.
    */
-  shipmentCancelled?: InlineOrReference<ShipmentCancelled>;
+  shipmentCancelled?: ShipmentCancelled;
 
 
   /**

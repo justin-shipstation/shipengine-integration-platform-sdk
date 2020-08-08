@@ -10,10 +10,10 @@ export interface FormDefinition {
   /**
    * A JSON Schema that defines the data collected by the form, including its constraints.
    */
-  dataSchema: InlineOrReference<JSONSchema6>;
+  dataSchema: JSONSchema6;
 
   /**
    * A UI Schema that defines the appearance of the form.
    */
-  uiSchema: InlineOrReference<UiSchema>;
+  uiSchema: UiSchema;
 }

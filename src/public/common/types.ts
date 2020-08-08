@@ -33,7 +33,7 @@ export interface EcmaScriptModule<T = unknown> {
  * - referenced via an external JSON/YAML file
  * - dynamically imported via `require()` or `import()`
  */
-export type InlineOrReference<T> = T | FilePath | DynamicImport<T>;
+export type T> = T | FilePath | DynamicImport<T;
 
 /**
  * An array of values. The array itself, and/or each item in the array can be specified multiple ways:
@@ -42,4 +42,4 @@ export type InlineOrReference<T> = T | FilePath | DynamicImport<T>;
  * - referenced via an external JSON/YAML file
  * - dynamically imported via `require()` or `import()`
  */
-export type InlineOrReferenceArray<T> = ReadonlyArray<InlineOrReference<T>> | FilePath | DynamicImport<ReadonlyArray<InlineOrReference<T>>>;
+export type InlineOrReferenceArray<T> = ReadonlyArray<T>> | FilePath | DynamicImport<ReadonlyArray<InlineOrReference<T>>;
