@@ -1,46 +1,14 @@
-import type { Charge, Identifiers, Note, TimeRange } from "../../common";
-import type { ShipmentIdentifier } from "../shipments/shipment-identifier";
+import { ChargeSchema, IdentifiersSchema, NoteSchema, TimeRangeSchema } from "../../common";
+import { ShipmentIdentifierSchema } from "../shipments/shipment-identifier";
+import Joi = require("@hapi/joi");
 
-/**
- * Confirmation that a package pickup has been scheduled
- */
-export interface PickupConfirmation {
-  /**
-   * The unique ID of the pickup
-   */
-  id: string;
 
-  /**
-   * Your own identifiers for this pickup
-   */
-  identifiers?: Identifiers;
-
-  /**
-   * A list of dates and times when the carrier intends to be available to pickup
-   */
-  timeWindows: TimeRange[];
-
-  /**
-   * The breakdown of charges for this pickup.
-   * If the carrier does not provide a detailed breakdown, then just use a single
-   * charge of type "pickup".
-   */
-  charges: Charge[];
-
-  /**
-   * The shipments to be picked-up.
-   * If not specified, the assumption is that all of the shipments will be picked up.
-   */
-  shipments?: ShipmentIdentifier[];
-
-  /**
-   * Human-readable information about the pickup confirmation
-   */
-  notes?: Note[];
-
-  /**
-   * Arbitrary data about this pickup that will be persisted by the ShipEngine Integration Platform.
-   * Must be JSON serializable.
-   */
-  metadata?: object;
-}
+export const PickupConfirmation = Joi.object({
+  id: Joi.string().required(),
+  identifiers: IdentifiersSchema.optional(),
+  timeWindows: Joi.array().required().items(TimeRangeSchema.required()).min(1),
+  charges: Joi.array().required().items(ChargeSchema.required()),
+  shipments: Joi.array().optional().items(ShipmentIdentifierSchema),
+  notes: Joi.array().optional().items(NoteSchema),
+  metadata: Joi.object().optional()
+});

@@ -3,9 +3,7 @@ import { SalesOrderArray } from "./sales-order-array";
 import type { SalesOrderTimeRange } from "./sales-order-time-range";
 import { SalesOrderShipment } from "./shipments/sales-order-shipment";
 
-/**
- * Returns all orders that were created and/or modified within a given timeframe
- */
+
 export type GetSalesOrdersByDate = (transaction: Transaction, range: SalesOrderTimeRange)
 => SalesOrderArray | Promise<SalesOrderArray>;
 

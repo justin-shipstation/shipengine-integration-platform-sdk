@@ -1,18 +1,9 @@
-import type { Manifest } from "./manifest";
-import type { NonManifestedShipment } from "./non-manifested-shipment";
+import { ManifestSchema } from "./manifest";
+import { NonManifestedShipmentSchema } from "./non-manifested-shipment";
+import Joi = require("@hapi/joi");
 
-/**
- * Confirmation that an end-of-day manifest has been created
- */
-export interface ManifestConfirmation {
-  /**
-   * The shipments that are included on this manifest.
-   * If not specified, the assumption is that the manifest includes all of the shipments.
-   */
-  manifests: Manifest[];
 
-  /**
-   * An array of the shipments that could not be manifested, and why
-   */
-  notManifested?: NonManifestedShipment[];
-}
+export const ManifestConfirmationSchema = Joi.object({
+  manifests: Joi.array().required().items(ManifestSchema.required()),
+  notManifested: Joi.array().optional().items(NonManifestedShipmentSchema.required())
+})

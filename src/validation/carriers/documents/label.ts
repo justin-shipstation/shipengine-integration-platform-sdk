@@ -1,13 +1,6 @@
-import type { Document } from "./document";
+import { DocumentSchema } from "./document";
+import Joi = require("@hapi/joi");
 
-/**
- * A shipping label
- */
-export interface Label extends Document {
-  /**
-   * The **actual** reference fields on the label, which may not match the originally-specified
-   * reference fields due to the carrier's restrictions on the number of fields or the length
-   * of each field.
-   */
-  referenceFields?: string[];
-}
+export const LabelSchema = Joi.object({
+  referenceFields: Joi.array().optional().items(Joi.string().required())
+}).concat(DocumentSchema);

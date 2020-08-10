@@ -1,13 +1,7 @@
 
-import type { PackageIdentifier } from "./package-identifier";
+import { PackageIdentifierSchema } from "./package-identifier";
+import Joi = require("@hapi/joi");
 
-/**
- * Confirmation details about a package in a shipment
- */
-export interface PackageConfirmation extends PackageIdentifier {
-  /**
-   * Arbitrary data about this package that will be persisted by the ShipEngine Integration Platform.
-   * Must be JSON serializable.
-   */
-  metadata?: object;
-}
+export const PackageConfirmationSchema = Joi.object({
+  metadata: Joi.object().optional()
+}).concat(PackageIdentifierSchema);

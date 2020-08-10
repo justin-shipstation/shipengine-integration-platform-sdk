@@ -1,19 +1,8 @@
-import type { UUID } from "../../common";
-import type { ShipmentIdentifier } from "./shipment-identifier";
+import { UUIDSchema } from "../../common";
+import { ShipmentIdentifierSchema } from "./shipment-identifier";
+import Joi = require("@hapi/joi");
 
-
-/**
- * Cancellation of a previously-created shipment
- */
-export interface ShipmentCancellation extends ShipmentIdentifier {
-  /**
-   * The unique ID of this cancellation. This ID is used to correlate cancellations with outcomes.
-   */
-  cancellationID: UUID;
-
-  /**
-   * Arbitrary data about this shipment that will be persisted by the ShipEngine Integration Platform.
-   * Must be JSON serializable.
-   */
-  metadata: object;
-}
+export const ShipmentCancellationSchema = Joi.object({
+  cancellationID: UUIDSchema.required(),
+  metadata: Joi.object().required()
+}).concat(ShipmentIdentifierSchema);

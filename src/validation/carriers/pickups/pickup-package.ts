@@ -1,30 +1,10 @@
-import type { Dimensions, Weight } from "../../common";
-import type { PackageIdentifier } from "../packages/package-identifier";
-import type { PackagingIdentifier } from "../packaging";
+import { DimensionsSchema, WeightSchema } from "../../common";
+import { PackageIdentifierSchema } from "../packages/package-identifier";
+import Joi = require("@hapi/joi");
 
-
-/**
- * The package information needed to schedule a pickup
- */
-export interface PickupPackage extends PackageIdentifier {
-  /**
-   * The packaging used for this package
-   */
-  packaging: PackagingIdentifier;
-
-  /**
-   * The package dimensions
-   */
-  dimensions?: Dimensions;
-
-  /**
-   * The package weight
-   */
-  weight?: Weight;
-
-  /**
-   * Arbitrary data about this package that will be persisted by the ShipEngine Integration Platform.
-   * Must be JSON serializable.
-   */
-  metadata?: object;
-}
+export const PickupPackageSchema = Joi.object({
+  packaging: Joi.string().required(),
+  dimensions: DimensionsSchema.optional(),
+  weight: WeightSchema.optional(),
+  metadata: Joi.object().optional()
+}).concat(PackageIdentifierSchema);

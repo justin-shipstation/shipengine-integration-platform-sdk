@@ -1,20 +1,8 @@
-import type { Identifiers } from "../common";
-/**
- * Identifies a product
- */
-export interface ProductIdentifier {
-  /**
-   * The product catalog's unique ID for the order
-   */
-  id: string;
+import { IdentifiersSchema } from "../common";
+import Joi = require("@hapi/joi");
 
-  /**
-   * The Stock Keeping Unit code for this item
-   */
-  sku: string;
-
-  /**
-   * Your own identifiers for this product
-   */
-  identifiers: Identifiers;
-}
+export const ProductIdentifierSchema = Joi.object({
+  id: Joi.string().required(),
+  sku: Joi.string().required(),
+  identifiers: IdentifiersSchema.required()
+});

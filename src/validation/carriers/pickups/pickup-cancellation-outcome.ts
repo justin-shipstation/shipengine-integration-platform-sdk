@@ -1,44 +1,12 @@
-import type { CancellationStatus, Note, UUID } from "../../common";
+import { CancellationStatusSchema, NoteSchema, UUIDSchema } from "../../common";
+import Joi = require("@hapi/joi");
 
-/**
- * The outcome of a pickup cancellation
- */
-export interface PickupCancellationOutcome {
-  /**
-   * Indicates which pickup cancellation this outcome is for.
-   */
-  cancellationID: UUID;
-
-  /**
-   * The status of the cancellation
-   */
-  status: CancellationStatus;
-
-  /**
-   * The confirmation number of the cancellation
-   */
-  confirmationNumber?: string;
-
-  /**
-   * The carrier's code for this cancellation outcome
-   */
-  code?: string;
-
-  /**
-   * The carrier's description of the cancellation outcome.
-   * This description should not be specific to this particular pickup.
-   */
-  description?: string;
-
-  /**
-   * Human-readable information/instructions regarding the cancellation
-   * (e.g. "Please call ###-#### to cancel", "Cannot cancel because driver is en-route")
-   */
-  notes?: Note[];
-
-  /**
-   * Arbitrary data about this pickup that will be persisted by the ShipEngine Integration Platform.
-   * Must be JSON serializable.
-   */
-  metadata?: object;
-}
+export const PickupCancellationOutcomeSchema = Joi.object({
+  cancellationID: UUIDSchema.required(),
+  status: CancellationStatusSchema.required(),
+  confirmationNumber: Joi.string().optional(),
+  code: Joi.string().optional(),
+  description: Joi.string().optional(),
+  notes: Joi.array().optional().items(NoteSchema),
+  metadata: Joi.object().optional()
+});

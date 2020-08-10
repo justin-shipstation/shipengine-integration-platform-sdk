@@ -1,12 +1,5 @@
-import type { PackagingIdentifier } from "../packaging";
+import Joi = require("@hapi/joi");
 
-/**
- * The package information for a rate
- */
-export interface RatePackage {
-  /**
-   * The packaging this rate is for
-   */
-  packaging: PackagingIdentifier | string;
-
-}
+export const RatePackageSchema = Joi.object({
+  packaging: Joi.string().required()
+});

@@ -1,16 +1,7 @@
-import type { Identifiers } from "../common";
+import { IdentifiersSchema } from "../common";
+import Joi = require("@hapi/joi");
 
-/**
- * Identifies a sales order
- */
-export interface SalesOrderIdentifier {
-  /**
-   * The marketplace's unique ID for the sales order
-   */
-  id: string;
-
-  /**
-   * Your own identifiers for this sales order
-   */
-  identifiers: Identifiers;
-}
+export const SalesOrderIdentifierSchema = Joi.object({
+  id: Joi.string().required(),
+  identifiers: IdentifiersSchema.required()
+});

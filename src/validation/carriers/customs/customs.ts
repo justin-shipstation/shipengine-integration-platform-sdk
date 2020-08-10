@@ -1,25 +1,8 @@
-import { NonDeliveryOption } from "../enums";
-import { CustomsItem } from "./customs-item";
+import { NonDeliveryOptionSchema } from "../enums";
+import { CustomsItemSchema } from "./customs-item";
+import Joi = require("@hapi/joi");
 
-/**
- * Customs declarations for international shipments
- */
-export interface Customs {
-  /**
-   * Indicates what should be done if the package cannot be delivered.
-   * If `undefined`, the default behavior of the receiving country's customs department applies,
-   * which may incur charges.
-   */
-  nonDeliveryOption?: NonDeliveryOption;
-
-  /**
-   * Describes the contents of the package for customs purposes.
-   *
-   * NOTE: Customs contents may not correspond one-to-one with the package contents.
-   * Package contents usually include one item per unique merchandise SKU
-   * (e.g. one red t-shirt and one blue t-shirt), whereas customs contentsare often grouped by
-   * product type (e.g. two t-shirts). In addition, some package contents don't need to be dclared
-   * for customs purposes.
-   */
-  contents?: CustomsItem[];
-}
+export const CustomsSchema = Joi.object({
+  nonDeliveryOption: NonDeliveryOptionSchema.optional(),
+  contents: Joi.array().optional().items(CustomsItemSchema.required())
+});

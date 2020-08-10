@@ -1,16 +1,8 @@
-import type { Identifiers } from "../../common";
+import { IdentifiersSchema } from "../../common";
+import Joi = require("@hapi/joi");
 
-/**
- * Identifies a package
- */
-export interface PackageIdentifier {
-  /**
-   * The carrier tracking number
-   */
-  trackingNumber: string;
 
-  /**
-   * Your own identifiers for this package
-   */
-  identifiers: Identifiers;
-}
+export const PackageIdentifierSchema = Joi.object({
+  trackingNumber: Joi.string().required(),
+  identifiers: IdentifiersSchema.required()
+});

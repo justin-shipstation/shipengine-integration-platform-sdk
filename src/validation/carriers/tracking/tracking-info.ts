@@ -1,25 +1,11 @@
-import type { DateTimeZone } from "../../common";
-import type { ShipmentIdentifier } from "../shipments/shipment-identifier";
-import type { PackageTrackingInfo } from "./package-tracking-info";
-import type { TrackingEvent } from "./tracking-event";
+import { DateTimeZoneSchema } from "../../common";
+import { ShipmentIdentifierSchema } from "../shipments/shipment-identifier";
+import { PackageTrackingInfoSchema } from "./package-tracking-info";
+import { TrackingEventSchema } from "./tracking-event";
+import Joi = require("@hapi/joi");
 
-/**
- * Tracking information about a shipment
- */
-export interface TrackingInfo extends ShipmentIdentifier {
-  /**
-   * The date and time that the shipment is now expected to be delivered.
-   * Once the shipment has been delivered, this is the actual delivery date/time.
-   */
-  deliveryDateTime?: DateTimeZone | Date | string;
-
-  /**
-   * The list of packages in the shipment
-   */
-  packages: PackageTrackingInfo[];
-
-  /**
-   * The events and status changes that have occured for this shipment
-   */
-  events: TrackingEvent[];
-}
+export const TrackingInfoSchema = Joi.object({
+  deliveryDateTime: DateTimeZoneSchema.optional(),
+  packages: Joi.array().required().items(PackageTrackingInfoSchema),
+  events: Joi.array().required().items(TrackingEventSchema)
+}).concat(ShipmentIdentifierSchema);

@@ -1,21 +1,9 @@
-import type { ShipmentIdentifier } from "../shipments/shipment-identifier";
+import { ShipmentIdentifierSchema } from "../shipments/shipment-identifier";
+import Joi = require("@hapi/joi");
 
-/**
- * The information needed to request tracking information for a shipment
- */
-export interface TrackingCriteria extends ShipmentIdentifier {
-  /**
-   * Return shipment details
-   */
-  returns: {
-    /**
-     * Indicates whether this is a return shipment
-     */
-    isReturn: boolean;
-  };
-
-  /**
-   * Arbitrary data about this shipment that was previously persisted by the ShipEngine Platform.
-   */
-  metadata: object;
-}
+export const TrackingCriteriaSchema = Joi.object({
+  returns: Joi.object({
+    isReturn: Joi.boolean().required()
+  }),
+  metadata: Joi.object().required()
+}).concat(ShipmentIdentifierSchema);

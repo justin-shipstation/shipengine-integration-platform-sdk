@@ -1,79 +1,21 @@
-import type { AddressWithContactInfo, DateTimeZone, MonetaryValue } from "../../common";
-import type { NewPackage } from "../packages/new-package";
-import { DeliveryConfirmation } from "../delivery-confirmation";
+import { AddressWithContactInfoSchema, DateTimeZoneSchema, MonetaryValueSchema } from "../../common";
+import { NewPackageSchema } from "../packages/new-package";
+import { DeliveryConfirmationSchema } from "../delivery-confirmation";
+import Joi = require("@hapi/joi");
 
-/**
- * The information needed to create a new shipment
- */
-export interface NewShipment {
-  /**
-   * The delivery service to use
-   */
-  deliveryService: string;
 
-  /**
-   * The sender's contact info and address
-   */
-  shipFrom: AddressWithContactInfo;
-
-  /**
-   * The recipient's contact info and address
-   */
-  shipTo: AddressWithContactInfo;
-
-  /**
-   * The return address
-   */
-  returnTo: AddressWithContactInfo;
-
-  /**
-   * The date/time that the package is expected to ship.
-   * This is not guaranteed to be in the future.
-   */
-  shipDateTime: DateTimeZone;
-
-  /**
-   * The total insured value of all packages in the shipment
-   */
-  totalInsuredValue: MonetaryValue;
-
-  /**
-   * Indicates whether the shipment cannot be processed automatically due to size, shape, weight, etc.
-   * and requires manual handling.
-   *
-   * This property is `true` if any package in the shipment is non-machinable.
-   */
-  isNonMachinable: boolean;
-
-  /**
-   * Return shipment details
-   */
-  returns: {
-    /**
-     * Indicates whether this is a return shipment
-     */
-    isReturn: boolean;
-
-    /**
-     * A return merchandise authorization (RMA) is an associated number assigned to process the return,
-     * this number is often printed on the label, and used when the original shipper processes the inbound return.
-     */
-    rmaNumber: string;
-  };
-
-  /**
-   * The list of packages in the shipment
-   */
-  packages: NewPackage[];
-
-  /**
-   * The requested delivery confirmation
-   */
-  deliveryConfirmation?: DeliveryConfirmation;
-
-  /**
-   * Returns the first package in the `packages` array.
-   * Useful for carriers that only support single-piece shipments.
-   */
-  package: NewPackage;
-}
+export const NewShipmentSchema = Joi.object({
+  deliveryService: Joi.string().required(),
+  shipFrom: AddressWithContactInfoSchema.required(),
+  shipTo: AddressWithContactInfoSchema.required(),
+  returnTo: AddressWithContactInfoSchema.required(),
+  shipDateTime: DateTimeZoneSchema.required(),
+  totalInsuredValue: MonetaryValueSchema.required(),
+  isNonMachinable: Joi.boolean().required(),
+  returns: Joi.object({
+    isReturn: Joi.boolean().required(),
+    rmaNumber: Joi.string().required()
+  }),
+  packages: Joi.array().required().items(NewPackageSchema.required()),
+  deliveryConfirmation: DeliveryConfirmationSchema.optional()
+});

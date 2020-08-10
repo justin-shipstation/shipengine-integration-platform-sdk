@@ -2,13 +2,9 @@ import type { ConnectionAppDefinition } from "../common";
 import type { GetSalesOrdersByDate, ShipmentCancelled, ShipmentCreated } from "./methods";
 
 
-/**
- * A ShipEngine Integration Platform order app
- */
+
 export interface OrderAppDefinition extends ConnectionAppDefinition {
-  /**
-   * Returns all orders that were created and/or modified within a given timeframe
-   */
+  
   getSalesOrdersByDate?: GetSalesOrdersByDate;
 
   /**
@@ -28,13 +24,9 @@ export interface OrderAppDefinition extends ConnectionAppDefinition {
   shipmentCancelled?: ShipmentCancelled;
 
 
-  /**
-   * Indicates whether to allow emails to be sent to customers with shipping or order updates
-   */
+  
   sendMail?: boolean;
 
-  /**
-   * Indicates to show time zone related settings to the user.
-   */
+  
   canConfigureTimeZone?: boolean;
 }
